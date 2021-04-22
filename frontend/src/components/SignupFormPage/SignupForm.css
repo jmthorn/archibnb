@@ -1,0 +1,115 @@
+.modal {
+  display: contents; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  font-family: arial;
+  font-size: 0.8em;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 500px; /* Could be more or less, depending on screen size */
+  height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  display: float;
+  position: relative;
+  align-self: center;
+}
+
+.modal .line {
+  width: 108%;
+  border-bottom: 1px solid rgb(212, 212, 212);
+  align-self: center;
+}
+
+.modal-content h1 {
+  margin-top: 30px;
+}
+
+.modal-content input {
+  border: none;
+  background-color: none;
+  margin: 10px;
+}
+.modal-content input:focus {
+  outline-width: 0;
+}
+
+.modal-content .input1 {
+  border: 1px solid rgb(173, 172, 172);
+  border-radius: 5px 5px 0px 0px;
+  padding: 10px;
+  margin: 0px;
+}
+
+.modal-content .input2 {
+  border: 1px solid rgb(173, 172, 172);
+  border-top: none;
+  padding: 10px;
+  margin: 0px;
+  border-radius: 0px;
+}
+
+.modal-content .input3 {
+  border: 1px solid rgb(173, 172, 172);
+  border-top: none;
+  border-bottom: none;
+  padding: 10px;
+  margin: 0px;
+}
+
+.modal-content .input4 {
+  border: 1px solid rgb(173, 172, 172);
+  padding: 10px;
+  border-radius: 0px 0px 5px 5px;
+  margin-bottom: 20px;
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: 0.2em;
+  font-weight: bold;
+  border: none;
+  background-color: #fefefe;
+  border-radius: 50%;
+  padding: 3px 1px 1px 2.5px;
+}
+
+.close:hover,
+.close:focus {
+  background-color: lightgrey;
+  text-decoration: none;
+  cursor: pointer;
+  outline-width: 0;
+}
+
+.submit {
+  padding: 15px;
+  margin: 5px;
+  background-color: rgb(214, 68, 92);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
