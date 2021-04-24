@@ -74,3 +74,36 @@ html {
 .nav-list {
   list-style-type: none;
 }
+
+.login-button button {
+  color: rgb(214, 68, 92);
+  border: none;
+  background-color: white;
+  font-size: 18px;
+  right: 3em;
+  top: 1.5em;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-button button:focus {
+  outline-width: 0;
+}
+
+.signup-link {
+  color: rgb(214, 68, 92);
+  border: none;
+  background-color: white;
+  font-size: 18px;
+  right: 8em;
+  top: 1.56em;
+  position: absolute;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  height: 60px;
+  top: -10px;
+  position: absolute;
+}
