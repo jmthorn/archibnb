@@ -1,19 +1,17 @@
 import React from 'react';
-
 import './Homepage.css';
 
 function Homepage (props) { 
 
     return(
         <>
-            <div className="homepage-container">
-                <form>
-
-                </form>
-                <h1>Stay</h1>
-                <h1>In</h1>
-                <h1>Style</h1>
-                <h2>Experience a stay in an architectural icon.</h2>
+            <form className="search-form-container">
+                <label> Location
+                    <input placeholder="Where are you going?"></input>
+                </label>
+            </form>
+            <div className="landingphoto">
+                <img src='/images/landingpage.jpg' alt ="landing-page"></img>
             </div>
         </>
     )
