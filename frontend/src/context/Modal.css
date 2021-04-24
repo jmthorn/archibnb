@@ -43,13 +43,14 @@
 }
 
 #modal-content h2 {
-  display: float;
+  left: 220px;
   position: relative;
-  align-self: center;
+  /* align-self: center; */
 }
 
 #modal-content h1 {
-  margin-top: 30px;
+  margin-top: 2.5em;
+  margin-bottom: 2em;
 }
 
 #modal-content input {
@@ -70,14 +71,14 @@
   border: 1px solid rgb(173, 172, 172);
   padding: 10px;
   border-radius: 0px 0px 5px 5px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: block;
   border-top: none;
 }
 
 #modal-content .login {
   padding: 15px;
-  margin: 5px;
+  margin: 15px 5px 5px, 5px;
   background-color: rgb(214, 68, 92);
   color: white;
   border: none;
