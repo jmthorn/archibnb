@@ -18,7 +18,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink className="signup-link" to="/signup">Sign Up</NavLink>
       </>
     );
   }
@@ -27,7 +27,11 @@ function Navigation({ isLoaded }){
     <ul className="nav-list">
       <li>
         <div className="home-container">
-            <NavLink exact to="/">Home</NavLink>
+            <NavLink className="home-button" exact to="/">
+              <a href="/" className="logo">
+                <img className="logo" src={"/images/archibnb_logo.png"} alt="logo"/>
+              </a>
+            </NavLink>
         </div>
         {isLoaded && sessionLinks}
       </li>
