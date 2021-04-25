@@ -59,6 +59,10 @@
   margin: 10px;
 }
 
+#modal-content input:focus {
+  outline-width: 0px;
+}
+
 #modal-content .input1 {
   border: 1px solid rgb(173, 172, 172);
   border-radius: 5px 5px 0px 0px;
