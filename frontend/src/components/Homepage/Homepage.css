@@ -1,6 +1,71 @@
+.homepage-container {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
 .landingphoto img {
   width: 100%;
   position: absolute;
-  z-index: -1;
+  z-index: -2;
   left: 0px;
+}
+
+.search-form-container {
+  background-color: white;
+  height: auto;
+  width: auto;
+  position: relative;
+  top: 7em;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  border-radius: 50px;
+  justify-content: center;
+}
+
+.search-form-container label {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.search-form-container label:hover {
+  box-shadow: 0px 0px 10px grey;
+  border-radius: 50px;
+}
+
+.search-form-container input {
+  padding-top: 10px;
+  border: none;
+  font-size: 16px;
+  background-color: none;
+}
+.search-form-container input:focus {
+  outline-width: 0px;
+}
+
+.search-form-container .input1 {
+  border: none;
+  font-size: 16px;
+  padding-left: 4em;
+  padding-right: 2em;
+}
+.search-form-container button {
+  border-radius: 35px;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(214, 68, 92);
+  border: none;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 0px 20px;
+}
+
+.search-form-container button:focus {
+  outline-width: 0px;
+  box-shadow: 0px 0px 10px grey;
+  border-radius: 50px;
 }
