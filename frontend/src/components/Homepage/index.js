@@ -22,9 +22,6 @@ function Homepage (props) {
                     <button>Search</button>
                 </form>
             </div>
-                <footer className="footer">
-                    
-                </footer>
         </>
     )
 }
