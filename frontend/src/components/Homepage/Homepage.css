@@ -1,20 +1,23 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
 .homepage-container {
   display: flex;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-}
-
-.landingphoto img {
-  width: 100%;
-  position: absolute;
-  z-index: -2;
-  left: 0px;
+  background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg);
+  background-size: cover;
+  /* background-size: contain; */
+  background-repeat: no-repeat;
+  height: 80em;
 }
 
 .search-form-container {
   background-color: white;
-  height: auto;
+  height: 6em;
   width: auto;
   position: relative;
   top: 7em;
@@ -68,4 +71,10 @@
   outline-width: 0px;
   box-shadow: 0px 0px 10px grey;
   border-radius: 50px;
+}
+
+.footer {
+  background-color: black;
+  height: 30px;
+  width: 100%;
 }

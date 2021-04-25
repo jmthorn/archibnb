@@ -21,10 +21,10 @@ function Homepage (props) {
                     </label>
                     <button>Search</button>
                 </form>
-                <div className="landingphoto">
-                    <img src='/images/landingpage.jpg' alt ="landing-page"></img>
-                </div>
             </div>
+                <footer className="footer">
+                    
+                </footer>
         </>
     )
 }
