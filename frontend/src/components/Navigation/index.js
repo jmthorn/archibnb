@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
   return (
     <ul className="nav-list">
       <li>
-        <div className="home-container">
+        <div className="nav-container">
             <NavLink className="home-button" exact to="/">
               <a href="/" className="logo">
                 <img className="logo" src={"/images/archibnb_logo.png"} alt="logo"/>

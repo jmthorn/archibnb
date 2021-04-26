@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     host_id: DataTypes.STRING
   }, {});
   Listing.associate = function(models) {
-    // associations can be defined here
+    Listing.hasMany(models.Image, { foreignKey: "listing_id" })
+    Listing.hasMany(models.Review, { foreignKey: "listing_id" })
+    Listing.hasMany(models.Booking, { foreignKey: "listing_id" })
   };
   return Listing;
 };
