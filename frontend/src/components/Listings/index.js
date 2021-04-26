@@ -29,13 +29,12 @@ function Listings () {
                 <div className="listings-container">
                     <nav>
                         {listings.map((listing) => {
-                            console.log(listing.Images[0].url)
                         return (
                             <NavLink key={listing.name} to={`/listings/${listing.id}`}>
                                 <div className={"nav-entry"}>
                                     <div
                                     className="nav-entry-image"
-                                    style={{ backgroundImage: `url(${listing.Images[0].url})` }}
+                                    style={{ backgroundImage: `url(${listing.Images[2].url})` }}
                                     ></div>
                                     <div className="listing-info">
                                         <div className="primary-text">{listing.name}</div>

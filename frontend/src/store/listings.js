@@ -18,7 +18,6 @@ export const getListings = () => async dispatch => {
 
   if (response.ok) {
     const list = await response.json(); //list is an array of listings
-    //let image = list[1].Images[1].url
     dispatch(load(list));
   }
 };
