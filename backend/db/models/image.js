@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     url: DataTypes.STRING
   }, {});
   Image.associate = function(models) {
-    // associations can be defined here
+    Image.belongsTo(models.Listing, { foreignKey: "listing_id" })
   };
   return Image;
 };
