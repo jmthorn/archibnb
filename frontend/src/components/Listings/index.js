@@ -7,11 +7,15 @@ import { getListings } from '../../store/listings'
 import './Listings.css';
 
 
-function Listings () { 
+function Listings ({guests, location}) { 
 
-  const listings = useSelector(state => {
+  const allListings = useSelector(state => {
     return state.listings.list
   });
+
+  const listings =  allListings.filter(listing => listing.guests === 2)
+
+
 
   const dispatch = useDispatch()
 
@@ -22,6 +26,7 @@ function Listings () {
   if (!listings) {
     return null;
   }
+
 
     return(
         <>

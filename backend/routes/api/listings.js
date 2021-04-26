@@ -13,9 +13,15 @@ router.get('/', asyncHandler(async function (req, res) {
 
 
 router.get('/:id', asyncHandler(async function(req, res) {
-  const listing = await db.Listing.findOne(req.params.id);
+  const listing = await db.Listing.findByPk(req.params.id, {
+    include: [{ model:db.Image}, {model:db.Booking}, {model: db.Review}],
+  });
+  
   return res.json(listing);
 }));
+
+
+
 
 
 module.exports = router;
