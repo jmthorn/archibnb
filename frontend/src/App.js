@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Listings from "./components/Listings";
+import Listing from "./components/Listing";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,8 +28,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/listings">
+          <Route exact path="/listings">
             <Listings />
+          </Route>
+          <Route path="/listings/:id">
+            <Listing />
           </Route>
           <Route>
             <h1>Page Not Found</h1>

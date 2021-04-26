@@ -1,5 +1,5 @@
 const LOAD = 'listings/LOAD';
-// const ADD_ONE = 'listings/ADD_ONE';
+const ADD_ONE = 'listings/ADD_ONE';
 
 
 const load = list => ({
@@ -7,10 +7,10 @@ const load = list => ({
   list,
 });
 
-// const addOneListing = listing => ({
-//   type: ADD_ONE,
-//   listing,
-// });
+const addOneListing = listing => ({
+  type: ADD_ONE,
+  listing,
+});
 
 
 export const getListings = () => async dispatch => {
@@ -22,13 +22,13 @@ export const getListings = () => async dispatch => {
   }
 };
 
-// export const getOneListing = (id) => async dispatch => {
-//   const res = await fetch(`/api/listings/${id}`)
-//   if (!res.ok) throw res;
-
-//   let listing = await res.json();
-//   dispatch(addOneListing(listing))
-// }
+export const getOneListing = (listingId) => async dispatch => {
+  const res = await fetch(`/api/listings/${listingId}`)
+  if (!res.ok) throw res;
+  let listing = await res.json();
+  // console.log("FETCH LISTING: ",listing)
+  dispatch(addOneListing(listing))
+}
 
 
 const initialState = {
@@ -56,25 +56,25 @@ const listingReducer = (state = initialState, action) => {
         list: action.list,
       };
     }
-    // case ADD_ONE: {
-    //   if (!state[action.listing.id]) {
-    //     const newState = {
-    //       ...state,
-    //       [action.listing.id]: action.listing
-    //     };
-    //     const listingList = newState.list.map(id => newState[id]);
-    //     listingList.push(action.listing);
-    //     // newState.list = sortList(listingList);
-    //     return listingList//newState;
-    //   }
-    //   return {
-    //     ...state,
-    //     [action.listing.id]: {
-    //       ...state[action.listing.id],
-    //       ...action.listing,
-    //     }
-    //   };
-    // }
+    case ADD_ONE: {
+      if (!state[action.listing.id]) {
+        const newState = {
+          ...state,
+          [action.listing.id]: action.listing
+        };
+        const listingList = newState.list.map(id => newState[id]);
+        listingList.push(action.listing);
+        // newState.list = sortList(pokemonList);
+        return newState;
+      }
+      return {
+        ...state,
+        [action.listing.id]: {
+          ...state[action.listing.id],
+          ...action.listing,
+        }
+      };
+    }
     
     default:
       return state;
