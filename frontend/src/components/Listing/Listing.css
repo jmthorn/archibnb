@@ -1,7 +1,7 @@
 .listing-container {
   top: 3em;
   position: relative;
-  height: 80em;
+  height: 90em;
   margin: 5em;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -68,6 +68,7 @@
   flex-wrap: wrap;
   align-content: space-between;
   margin-top: 1em;
+  width: 70%;
 }
 .review-container {
   margin-top: 3em;
