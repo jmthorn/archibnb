@@ -50,8 +50,8 @@ const { id } = useParams();
                 </div>
               </div>
               
+              <h1>Reviews</h1>
               <div className="reviews-container">
-              <h1></h1>
                 {listing.Reviews.map((review) =>  {
                   console.log(review)
                   return (
