@@ -11,7 +11,8 @@ body {
   background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
-  height: 80em;
+  height: 60em;
+  top: 2em;
 }
 
 .search-form-container {

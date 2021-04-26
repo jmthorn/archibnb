@@ -4,15 +4,89 @@
 }
 
 .listings-container {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
-  background-color: blue;
+  background-color: white;
   width: 55%;
   height: 800px;
+  overflow: scroll;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .maps-container {
-  background-color: pink;
+  background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/GoogleMaps_placeholder.png);
   width: 45%;
   height: 800px;
+}
+
+.nav-entry {
+  border-top: 1px solid lightgray;
+  margin: auto 2em;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  position: relative;
+}
+
+.nav-entry .listing-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.nav-entry .primary-text {
+  color: black;
+  font-size: 1.5em;
+  font-weight: 100;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid lightgray;
+}
+
+.nav-entry .secondary-text {
+  display: flex;
+  flex-direction: row;
+  color: grey;
+}
+
+.price-holder {
+  display: flex;
+  flex-direction: row;
+  bottom: 0em;
+  position: absolute;
+  right: 2em;
+  bottom: 1em;
+}
+
+.price-holder .price {
+  color: black;
+  font-size: 1.3em;
+  font-weight: 600;
+  padding-right: 0.3em;
+}
+.price-holder .per-night {
+  color: black;
+  font-size: 1.3em;
+  font-weight: 100;
+}
+
+.nav-entry-image {
+  height: 220px;
+  width: 320px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }

@@ -18,6 +18,7 @@ export const getListings = () => async dispatch => {
 
   if (response.ok) {
     const list = await response.json(); //list is an array of listings
+    //let image = list[1].Images[1].url
     dispatch(load(list));
   }
 };
@@ -32,7 +33,7 @@ export const getListings = () => async dispatch => {
 
 
 const initialState = {
-  list: [],
+  list: []
 };
 
 
@@ -52,8 +53,8 @@ const listingReducer = (state = initialState, action) => {
       });
       return {
         ...allListings,
-        ...state//,
-        // list: sortList(action.list),
+        ...state,
+        list: action.list,
       };
     }
     // case ADD_ONE: {

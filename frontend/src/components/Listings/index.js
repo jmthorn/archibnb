@@ -1,8 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { getListings } from '../../store/listings'
 import './Listings.css';
@@ -11,15 +10,14 @@ import './Listings.css';
 function Listings () { 
 
   const listings = useSelector(state => {
-    return state.listings.list.map(listingId => state.listings[listingId]);
+    return state.listings.list
   });
-  console.log("LISTINGS:" ,listings)
 
   const dispatch = useDispatch()
 
   useEffect(() => { 
     dispatch(getListings())
-  }, [dispatch, listings])
+  }, [dispatch])
 
   if (!listings) {
     return null;
@@ -31,18 +29,26 @@ function Listings () {
                 <div className="listings-container">
                     <nav>
                         {listings.map((listing) => {
+                            console.log(listing.Images[0].url)
                         return (
-                            <NavLink key={listing.name} to={`/listing/${listing.id}`}>
+                            <NavLink key={listing.name} to={`/listings/${listing.id}`}>
                                 <div className={"nav-entry"}>
                                     <div
                                     className="nav-entry-image"
-                                    // style={{ backgroundImage: `url('${listing.Image.url}')` }}
+                                    style={{ backgroundImage: `url(${listing.Images[0].url})` }}
                                     ></div>
-                                    <div>
-                                    <div className="primary-text">{listing.name}</div>
-                                    <div className="secondary-text">
-                                        {listing.bedrooms} {listing.guests}
+                                    <div className="listing-info">
+                                        <div className="primary-text">{listing.name}</div>
+                                        <div className="secondary-text">
+                                            <div className="guests">{listing.guests} guests ∙ </div>
+                                            <div> {listing.bedrooms} bedrooms ∙ </div>
+                                            <div> {listing.baths} baths</div>
+                                        </div>
                                     </div>
+                                    <div className="price-holder">
+                                        <div className="price">${listing.price} </div>
+                                        <div className="per-night"> / night</div>
+
                                     </div>
                                 </div>
                             </NavLink>
