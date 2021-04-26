@@ -1,12 +1,13 @@
 .listing-container {
-  top: 5em;
+  top: 3em;
   position: relative;
-  height: 50em;
+  height: 80em;
   margin: 5em;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .images-container {
-  height: 30em;
+  height: auto;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -29,8 +30,49 @@
   flex-direction: column;
   justify-content: space-between;
   align-content: flex-start;
+  width: 35%;
 }
 
 .secondary-images img {
   height: 48.5%;
+  max-width: fit-content;
+}
+
+#listing-address {
+  color: grey;
+  font-weight: 200;
+  text-decoration: underline;
+  font-size: 16px;
+  padding-bottom: 2em;
+}
+
+.house-info {
+  border-bottom: 1px solid rgb(216, 216, 216);
+  padding: 3em 0em 2em 0em;
+}
+.house-info .primary-text {
+  font-size: 1.5em;
+}
+
+.house-info .secondary-text {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  justify-content: space-between;
+  width: 14em;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+  margin-top: 1em;
+}
+.review-container {
+  margin-top: 3em;
+  margin-right: 3em;
+}
+.reviews-container .review {
+  width: 18em;
 }
