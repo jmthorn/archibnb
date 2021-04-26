@@ -32,7 +32,7 @@ export const getListings = () => async dispatch => {
 
 
 const initialState = {
-  list: [],
+  list: []
 };
 
 
@@ -52,8 +52,8 @@ const listingReducer = (state = initialState, action) => {
       });
       return {
         ...allListings,
-        ...state//,
-        // list: sortList(action.list),
+        ...state,
+        list: action.list,
       };
     }
     // case ADD_ONE: {
