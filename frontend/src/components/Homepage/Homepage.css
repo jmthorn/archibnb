@@ -79,3 +79,31 @@ body {
   box-shadow: 0px 0px 10px grey;
   border-radius: 50px;
 }
+
+.calender {
+  border: 1px solid rgb(255, 255, 255);
+  background-color: white;
+  border-radius: 2em;
+  padding: 3px;
+  box-shadow: 0px 3px 12px rgb(212, 211, 211);
+  height: 20em;
+  width: 20em;
+}
+.calender1 {
+  position: absolute;
+  left: 29%;
+  top: 18em;
+}
+.calender2 {
+  position: absolute;
+  left: 42%;
+  top: 18em;
+}
+
+.calender:focus {
+  outline-width: 0;
+}
+
+.calender:hover {
+  box-shadow: 0px 3px 12px rgb(212, 211, 211);
+}
