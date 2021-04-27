@@ -11,8 +11,8 @@ function Homepage (props) {
     const [showCalender1, setShowCalender1] = useState(false);
     const [showCalender2, setShowCalender2] = useState(false);
     const [location, setLocation] = useState("")
-    const [start_date, setStartDate] = useState("")
-    const [end_date, setEndDate] = useState("")
+    const [start_date, setStartDate] = useState(new Date())
+    const [end_date, setEndDate] = useState(new Date())
     const [guests, setGuests] = useState("")
     
     const openCalander1 = () => {
@@ -87,7 +87,7 @@ function Homepage (props) {
                 <Calendar
                     className="calender calender1"
                     onChange={(e) => setStartDate(e)}
-                    // value={start_date}
+                    value={start_date}
                 />
             )}
             {showCalender2 && (
