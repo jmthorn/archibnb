@@ -1,4 +1,9 @@
 'use strict';
+
+const faker = require('faker');
+const bcrypt = require('bcryptjs');
+const { random } = require('faker');
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
@@ -18,7 +23,8 @@ module.exports = {
       },
       image_url: { 
         type: Sequelize.STRING(300),
-        allowNull: true
+        allowNull: true,
+        defaultValue: faker.random.image(),
       },
       username: {
         type: Sequelize.STRING(30),
