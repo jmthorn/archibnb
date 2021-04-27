@@ -16,7 +16,7 @@ const { id } = useParams();
   });
 
   const dispatch = useDispatch()
-  console.log(listing)
+
   useEffect(() => { 
     dispatch(getOneListing(id))
   }, [id, dispatch])

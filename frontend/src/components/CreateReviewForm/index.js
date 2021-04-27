@@ -12,17 +12,14 @@ const CreateReviewForm = ({user, listing}) => {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const newReview = {
       review,
       guest_id: user.id,
       listing_id: parseInt(listing)
     };  
-    console.log("newReview returns:", newReview)
-    //newReview returns: {review: "What an awesome place to stay!", guest_id: 32, listing_id: 25}
     let createdReview = await dispatch(createReviewForm(newReview))
-    console.log("FRONTEND", createdReview)
     setReview("")
   };
 
