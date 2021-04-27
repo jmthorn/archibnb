@@ -27,7 +27,7 @@ body {
   height: 6em;
   width: auto;
   position: absolute;
-  top: 7em;
+  top: 10em;
   display: flex;
   flex-direction: row;
   align-content: center;

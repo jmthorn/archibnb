@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './Homepage.css';
 
+
+
 function Homepage (props) { 
 
     const [guests, setGuests] = useState("")
@@ -11,7 +13,9 @@ function Homepage (props) {
 
     const onSubmit = (e) => { 
         e.preventDefault()
-        
+
+
+
         history.push('/listings')
     }
 
