@@ -1,0 +1,31 @@
+.review-form {
+  display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 60%;
+}
+
+.review-form textarea {
+  box-shadow: 0px 0px 10px grey;
+  border: none;
+  padding: 1em;
+  border-radius: 20px;
+  font-size: 18px;
+  margin-right: 2em;
+  font-family: Arial, Helvetica, sans-serif;
+  resize: none;
+}
+
+.review-form textarea:focus {
+  outline-width: 0px;
+  box-shadow: 0px 0px 20px grey;
+}
+
+.review-form button {
+  background-color: rgb(214, 68, 92);
+  height: 3em;
+  width: 20%;
+  border-radius: 10px;
+  margin-top: 20px;
+}

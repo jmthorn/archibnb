@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReviewForm } from '../../store/reviews';
 // import { useHistory } from 'react-router-dom';
+import './CreateReviewForm.css';
 
 const CreateReviewForm = ({user, listing}) => {
 
@@ -19,18 +20,16 @@ const CreateReviewForm = ({user, listing}) => {
       guest_id: user.id,
       listing_id: parseInt(listing)
     };  
-    console.log("newReview returns:", newReview)
-    //newReview returns: {review: "What an awesome place to stay!", guest_id: 32, listing_id: 25}
     let createdReview = await dispatch(createReviewForm(newReview))
-    console.log("FRONTEND", createdReview)
     setReview("")
   };
 
 
   return (
     <section className="new-form-holder centered middled">
-      <form onSubmit={handleSubmit}>
-        <input
+      <form className="review-form" onSubmit={handleSubmit}>
+        <textarea
+          className="review-input"
           type="text"
           placeholder="Leave a review..."
           value={review}

@@ -1,5 +1,32 @@
 .footer-container {
   height: 20em;
   background-color: rgb(219, 219, 219);
-  border-top: 1px solid gray;
+  border-top: 1px solid rgb(211, 211, 211);
+  margin-top: 1em;
+  box-shadow: 0px 0px 10px grey;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.footer-container .footer-description {
+  font-size: 16px;
+  text-align: center;
+}
+
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.footer-icons img {
+  height: 3em;
+  text-align: center;
+  padding: 2em;
+  align-self: center;
 }

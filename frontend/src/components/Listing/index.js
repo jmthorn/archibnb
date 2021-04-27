@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router';
 import CreateReviewForm from '../CreateReviewForm'
 import { getOneListing } from '../../store/listings'
+import { getReviews } from '../../store/reviews'
 import './Listing.css';
 
 
@@ -15,11 +16,19 @@ const { id } = useParams();
     return state.listings[id]
   });
 
+  const reviews = useSelector(state => {
+    return state.reviews.reviews
+  });
+  console.log("FRONTEND REVIEWS:",reviews)
+
   const dispatch = useDispatch()
-  console.log(listing)
+
   useEffect(() => { 
     dispatch(getOneListing(id))
+    dispatch(getReviews(id))
   }, [id, dispatch])
+
+
 
   if (!listing) {
     return null;
@@ -67,12 +76,15 @@ const { id } = useParams();
               {sessionLinks}
               <div className="bottom-quadrant">
                 <div className="reviews-container">
-                  {listing.Reviews?.map((review) =>  {
+                  {reviews?.map((review) =>  {
+                    console.log(review)
                     return (
                       <div key={review.id} className="review-container">
                         <div className="author-container">
-                          {review.guest_id}
-                          {/* <img src={}></img> */}
+                          <img src={review.User.image_url} alt="author"></img>
+                          <div className="author">
+                          {review.User.first_name} {review.User.last_name}
+                          </div>
                           <div className="author-info">
 
                           </div>
