@@ -16,7 +16,7 @@
   font-family: arial;
   font-size: 0.8em;
   background-color: #fefefe;
-  margin: 20% auto; /* 15% from the top and centered */
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10px;
@@ -112,4 +112,5 @@
   border: none;
   border-radius: 5px;
   font-size: 1.2em;
+  margin-bottom: 10px;
 }

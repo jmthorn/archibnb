@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Listings from "./components/Listings";
 import Listing from "./components/Listing";
+import Profile from "./components/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/listings/:id">
             <Listing />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
           <Route>
             <h1>Page Not Found</h1>
