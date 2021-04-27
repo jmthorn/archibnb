@@ -16,6 +16,7 @@
   padding: 3px;
   position: absolute;
   right: 5em;
+  top: 1em;
 }
 
 .profile-button:focus {
