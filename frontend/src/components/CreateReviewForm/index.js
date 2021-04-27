@@ -12,7 +12,7 @@ const CreateReviewForm = ({user, listing}) => {
 
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const newReview = {
       review,

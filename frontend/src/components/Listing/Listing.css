@@ -91,3 +91,19 @@
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgb(182, 181, 181);
 }
+
+.author-container {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+.author-container img {
+  height: 4em;
+  width: 4em;
+  border-radius: 50px;
+}
+
+.author-container .author {
+  padding: 1em;
+}

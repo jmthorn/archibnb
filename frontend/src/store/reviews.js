@@ -3,9 +3,9 @@ import { csrfFetch } from './csrf';
 const LOAD = 'reviews/LOAD'
 const ADD_ONE = 'reviews/ADD_ONE'
 
-const load = list => ({
+const load = reviews => ({
     type:LOAD,
-    list
+    reviews
 })
 
 const addOneReview = review => ({
@@ -13,18 +13,17 @@ const addOneReview = review => ({
     review
 })
 
-export const getReviews = () => async dispatch => { 
-    const res = await fetch('api/reviews');
-
+export const getReviews = (id) => async dispatch => { 
+    const res = await csrfFetch(`/api/reviews/${id}`);
     if(res.ok) { 
-        const list = await res.json()
-        dispatch(load(list))
+      const reviews = await res.json()
+      console.log("REVIEWS STORE",reviews)
+      dispatch(load(reviews))
     }
 }
 
+
 export const createReviewForm = newReview => async dispatch => {
-  console.log("STORE REVIEW1:",newReview)
-  //Returns: STORE REVIEW1: {review: "sdgsd", guest_id: 32, listing_id: 25}
   const res = await csrfFetch('/api/reviews', { 
     method: 'POST',
     body: JSON.stringify(newReview)
@@ -39,7 +38,7 @@ export const createReviewForm = newReview => async dispatch => {
 
 
 const initialState = {
-  list: []
+  reviews: []
 };
 
 
@@ -48,13 +47,13 @@ const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
       const allReviews = {};
-      action.list.forEach(review => {
+      action.reviews.forEach(review => {
         allReviews[review.id] = review;
       });
       return {
         ...allReviews,
         ...state,
-        list: action.list,
+        reviews: action.reviews,
       };
     }
     case ADD_ONE: {
@@ -63,8 +62,8 @@ const reviewReducer = (state = initialState, action) => {
           ...state,
           [action.review.id]: action.review
         };
-        const reviewList = newState.list.map(id => newState[id]);
-        reviewList.push(action.review);
+        const reviewList = newState.list?.map(id => newState[id]);
+        reviewList?.push(action.review);
         return newState;
       }
       return {
