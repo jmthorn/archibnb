@@ -1,7 +1,7 @@
 .listing-container {
   top: 3em;
   position: relative;
-  height: 90em;
+  height: auto;
   margin: 5em;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -76,4 +76,18 @@
 }
 .reviews-container .review {
   width: 18em;
+}
+
+.bottom-quadrant {
+  display: flex;
+  flex-direction: row;
+}
+
+.bookings-container {
+  background-color: white;
+  position: relative;
+  width: 30%;
+  height: 18em;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgb(182, 181, 181);
 }
