@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+import GoogleApiWrapper from '../GoogleMapsAPI';
+
 
 import { getListings } from '../../store/listings'
 import './Listings.css';
@@ -13,7 +15,7 @@ function Listings ({guests, location}) {
     return state.listings.list
   });
 
-  const listings =  allListings.filter(listing => listing.guests === 2)
+  const listings =  allListings.filter(listing => listing.guests >= 2)
 
 
 
@@ -61,7 +63,7 @@ function Listings ({guests, location}) {
                     </nav>
                 </div>
                 <div className="maps-container">
-
+                        <GoogleApiWrapper />
                 </div>
             </div>
         </>
