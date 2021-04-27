@@ -5,21 +5,28 @@ body {
 
 .homepage-container {
   display: flex;
+  align-content: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg);
+  /* background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg); */
   background-size: 100%;
   background-repeat: no-repeat;
-  height: 60em;
+  min-height: 70em;
   top: 2em;
 }
 
+.homepage-container img {
+  width: 100%;
+  height: fit-content;
+}
+
 .search-form-container {
+  z-index: 1;
   background-color: white;
   height: 6em;
   width: auto;
-  position: relative;
+  position: absolute;
   top: 7em;
   display: flex;
   flex-direction: row;

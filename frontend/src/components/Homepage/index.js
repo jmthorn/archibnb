@@ -18,6 +18,7 @@ function Homepage (props) {
     return(
         <>
             <div className="homepage-container">
+                <img alt="background" src="https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg"></img>
                 <form className="search-form-container" onSubmit={onSubmit}>
                     <label value = {location} onChange={(e) => setLocation(e.target.value)} className="input1"> Location
                         <input placeholder="Where are you going?"></input>
