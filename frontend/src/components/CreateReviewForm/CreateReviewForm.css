@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: flex-start;
   width: 60%;
+  border-bottom: 1px solid rgb(201, 201, 201);
+  padding-bottom: 2em;
 }
 
 .review-form textarea {
@@ -28,4 +30,7 @@
   width: 20%;
   border-radius: 10px;
   margin-top: 20px;
+  border: none;
+  color: white;
+  font-size: 16px;
 }
