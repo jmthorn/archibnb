@@ -9,6 +9,7 @@
 .images-container {
   height: auto;
   width: auto;
+  max-height: 30em;
   display: flex;
   flex-direction: row;
   overflow: hidden;
