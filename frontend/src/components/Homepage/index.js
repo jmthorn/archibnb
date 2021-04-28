@@ -3,10 +3,11 @@ import { useHistory } from 'react-router';
 import Calendar from 'react-calendar';
 import './Homepage.css';
 import 'react-calendar/dist/Calendar.css';
+import Geocode from "react-geocode";
+Geocode.setApiKey("AIzaSyBrXi5aamhelijXk37duN6o5lR3aPgJBiA");
 
 
 function Homepage (props) { 
-    
     
     const [showCalender1, setShowCalender1] = useState(false);
     const [showCalender2, setShowCalender2] = useState(false);
@@ -23,14 +24,28 @@ function Homepage (props) {
         if (showCalender2) return;
         setShowCalender2(true);
     };
-
+    
     const history = useHistory()
-
-    const onSubmit = (e) => { 
+    
+    const onSubmit = async (e) => { 
         e.preventDefault()
 
+        Geocode.fromAddress(location).then(
+            (response) => {
+                const { lat, lng } = response.results[0].geometry.location;
+                console.log(lat, lng)
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+        let res = await Geocode.fromAddress(location)
+        const { lat, lng } = res.results[0].geometry.location;
+        let address = [lat, lng]
+           
+
         let searchFrom = { 
-            address: location,
+            address,
             start_date,
             end_date,
             guests,
