@@ -13,6 +13,7 @@ import './Listings.css';
 function Listings () { 
 
     const {
+            location,
             start_date,
             end_date,
             guests,
@@ -24,9 +25,18 @@ function Listings () {
 
   let listings;
   listings =  allListings.filter(listing => listing.guests >= guests)
-//   listings = listings.filter(listing => listings.)
 
-
+  let  coordinates = () => { 
+      let coordinateObjects = []
+    listings.forEach((listing) => { 
+        const lat = listing.latitude;
+        const long = listing.longitude;
+        let coorObj = {lat, long}
+        coordinateObjects.push(coorObj)
+    })
+    return coordinateObjects
+  }
+console.log(coordinates())
 
   const dispatch = useDispatch()
 
@@ -72,7 +82,7 @@ function Listings () {
                     </nav>
                 </div>
                 <div className="maps-container">
-                    <GoogleApiWrapper />
+                    <GoogleApiWrapper location={location} />
                 </div>
             </div>
         </>

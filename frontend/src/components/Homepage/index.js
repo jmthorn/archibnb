@@ -54,8 +54,8 @@ function Homepage () {
         );
         let res = await Geocode.fromAddress(location)
         const { lat, lng } = res.results[0].geometry.location;
-        let address = [lat, lng]
-
+        let address = {lat, lng}
+        setLocation(address)
         let searchFrom = { 
             address,
             start_date,

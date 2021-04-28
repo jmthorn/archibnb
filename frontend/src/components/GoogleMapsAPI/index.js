@@ -7,17 +7,15 @@ const mapStyles = {
 };
 
 export function MapContainer (props) {
-  
+    
+    const { location } = props
     return (
       <Map
         google={props.google}
-        zoom={14}
+        zoom={7}
         style={mapStyles}
         initialCenter={
-          {
-            lat: -1.2884,
-            lng: 36.8233
-          }
+            location
         }
       />
     );
