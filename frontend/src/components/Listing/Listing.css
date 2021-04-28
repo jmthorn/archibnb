@@ -109,3 +109,71 @@
 .author-container .author {
   padding: 1em;
 }
+
+.bookings-container {
+  position: relative;
+  padding: 2em;
+  width: 300px;
+  height: 250px;
+}
+
+.bookings-container .price-container {
+  top: 2em;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.price1 {
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-right: 5px;
+}
+
+.per-night1 {
+  font-size: 1.2em;
+  font-weight: 100;
+  padding-right: 5px;
+}
+
+.bookings-container button {
+  background-color: rgb(214, 68, 92);
+  height: 3em;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.bookingDates {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.guests {
+  border: 1px solid lightgray;
+  border-radius: 0px 0px 10px 10px;
+  border-top: none;
+  padding: 10px;
+}
+
+.checkin-container {
+  width: 50%;
+  border-right: 1px solid lightgray;
+}
+
+.checkout-container {
+  width: 50%;
+  padding-left: 10px;
+}
+
+.rounded-date {
+  color: grey;
+  padding-top: 5px;
+}
