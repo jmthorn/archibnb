@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { useHistory } from 'react-router';
 import Calendar from 'react-calendar';
+import { useSearch } from '../../context/SearchContext';
 import './Homepage.css';
 import 'react-calendar/dist/Calendar.css';
 import Geocode from "react-geocode";
@@ -8,16 +9,32 @@ Geocode.setApiKey("AIzaSyBrXi5aamhelijXk37duN6o5lR3aPgJBiA");
 // Geocode.setApiKey(process.env.GOOGLE_MAPS_KEY);
 
 
-function Homepage (props) { 
+function Homepage () { 
     
     const [showCalender1, setShowCalender1] = useState(false);
     const [showCalender2, setShowCalender2] = useState(false);
-    const [location, setLocation] = useState("")
-    const [start_date, setStartDate] = useState(new Date())
-    const [end_date, setEndDate] = useState(new Date())
-    const [rounded_start_date, setRoundedStartDate] = useState(new Date())
-    const [rounded_end_date, setRoundedEndDate] = useState(new Date())
-    const [guests, setGuests] = useState("")
+    
+    const {
+        location,
+        setLocation,
+        start_date,
+        setStartDate,
+        end_date,
+        setEndDate,
+        rounded_start_date,
+        setRoundedStartDate,
+        rounded_end_date,
+        setRoundedEndDate,
+        guests,
+        setGuests
+    } = useSearch()
+
+    // const [location, setLocation] = useState("")
+    // const [start_date, setStartDate] = useState(new Date())
+    // const [end_date, setEndDate] = useState(new Date())
+    // const [rounded_start_date, setRoundedStartDate] = useState(new Date())
+    // const [rounded_end_date, setRoundedEndDate] = useState(new Date())
+    // const [guests, setGuests] = useState("")
     
     const openCalander1 = () => {
         if (showCalender1) return;
@@ -36,7 +53,6 @@ function Homepage (props) {
         Geocode.fromAddress(location).then(
             (response) => {
                 const { lat, lng } = response.results[0].geometry.location;
-                console.log(lat, lng)
             },
             (error) => {
                 console.error(error);
@@ -45,7 +61,6 @@ function Homepage (props) {
         let res = await Geocode.fromAddress(location)
         const { lat, lng } = res.results[0].geometry.location;
         let address = [lat, lng]
-           
 
         let searchFrom = { 
             address,
@@ -53,34 +68,25 @@ function Homepage (props) {
             end_date,
             guests,
         }
-        console.log(searchFrom)
+        console.log(searchFrom, rounded_start_date, rounded_end_date)
         // history.push('/listings')
     }
 
     useEffect(() => {
         if (!showCalender1) return;
-
         const closeCalender1 = () => {
         setShowCalender1(false);
         };
-        
-        // let calender = document.querySelector(".calender")
-        
         document.addEventListener('click', closeCalender1);
-
-        
         return () => document.removeEventListener("click", closeCalender1);
     }, [showCalender1]);
 
     useEffect(() => {
         if (!showCalender2) return;
-
         const closeCalender2 = () => {
         setShowCalender2(false);
         };
-
         document.addEventListener('click', closeCalender2);
-    
         return () => document.removeEventListener("click", closeCalender2);
     }, [showCalender2]);
 
@@ -115,7 +121,7 @@ function Homepage (props) {
                     <label onClick={openCalander1} value={rounded_start_date} className="input2"> Check In
                         <input placeholder="Add Dates"></input>
                     </label>
-                    <label onClick={openCalander2} value={rounded_end_date} onChange={(e) => setEndDate(e.target.value)} className="input3"> Check Out
+                    <label onClick={openCalander2} value={rounded_end_date} className="input3"> Check Out
                         <input placeholder="Add Dates"></input>
                     </label>
                     <label className="input4"> Guests

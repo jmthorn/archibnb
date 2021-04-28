@@ -9,9 +9,15 @@ function Reviews () {
 
 const { id } = useParams();
 
-  const reviews = useSelector(state => {
-    return state.reviews.reviews
-  });
+const unsortedReviews = Object.values(useSelector(state => {
+    return state.reviews
+  }))
+
+  const reviews = unsortedReviews.sort(function(a, b) {
+  return b.id - a.id;
+  })
+
+ 
 
 
   const dispatch = useDispatch()

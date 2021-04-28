@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import { useSearch } from '../../context/SearchContext';
 import { useParams } from 'react-router';
 import CreateReviewForm from '../CreateReviewForm'
 import { getOneListing } from '../../store/listings'
@@ -12,6 +13,31 @@ function Listing () {
 
 const sessionUser = useSelector(state => state.session.user);
 const { id } = useParams();
+
+
+
+const {
+        start_date,
+        setStartDate,
+        end_date,
+        setEndDate,
+        rounded_start_date,
+        setRoundedStartDate,
+        rounded_end_date,
+        setRoundedEndDate,
+        guests,
+        setGuests
+  } = useSearch()
+
+        let searchFrom = { 
+            // address,
+            start_date,
+            end_date,
+            guests,
+        }
+        console.log(searchFrom, rounded_start_date, rounded_end_date)
+
+
   const listing = useSelector(state => {
     return state.listings[id]
   });
@@ -40,6 +66,7 @@ const { id } = useParams();
       </>
     );
   }
+
 
     return(
         <>
@@ -75,6 +102,10 @@ const { id } = useParams();
                   <div className="price-holder">
                       <div className="price">${listing.price} </div>
                       <div className="per-night"> / night</div>
+                      <div>
+                        <div>{rounded_start_date.toString()}</div>
+                        {/* <div>{end_date}</div> */}
+                      </div>
                   </div>
                 </div>
               </div>

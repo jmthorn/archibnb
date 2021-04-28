@@ -17,7 +17,6 @@ export const getReviews = (id) => async dispatch => {
     const res = await csrfFetch(`/api/reviews/${id}`);
     if(res.ok) { 
       const reviews = await res.json()
-      console.log("REVIEWS STORE",reviews)
       dispatch(load(reviews))
     }
 }
@@ -37,9 +36,7 @@ export const createReviewForm = newReview => async dispatch => {
 }
 
 
-const initialState = {
-  reviews: []
-};
+const initialState = {};
 
 
 
@@ -53,26 +50,15 @@ const reviewReducer = (state = initialState, action) => {
       return {
         ...allReviews,
         ...state,
-        reviews: action.reviews,
       };
     }
     case ADD_ONE: {
-      if (!state[action.review.id]) {
         const newState = {
           ...state,
           [action.review.id]: action.review
         };
-        const reviewList = newState.list?.map(id => newState[id]);
-        reviewList?.push(action.review);
+
         return newState;
-      }
-      return {
-        ...state,
-        [action.review.id]: {
-          ...state[action.review.id],
-          ...action.review,
-        }
-      };
     }
     
     default:

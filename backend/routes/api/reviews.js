@@ -22,7 +22,13 @@ router.post(
   '/',
   // reviewValidations.validateCreate,
   asyncHandler(async function (req, res) {
-    const newReview = await db.Review.create(req.body);
+    const review = await db.Review.create(req.body);
+    const newReview = await db.Review.findOne({
+      where: {
+        id: review.id
+      },
+      include: { model:db.User}
+    })
     return res.json(newReview)
     // return res.redirect(`${req.baseUrl}/${id}`);
   })
