@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSearch } from '../../context/SearchContext';
 import { useDispatch, useSelector } from 'react-redux'
 import GoogleApiWrapper from '../GoogleMapsAPI';
 
@@ -11,11 +12,19 @@ import './Listings.css';
 
 function Listings () { 
 
+    const {
+            start_date,
+            end_date,
+            guests,
+      } = useSearch()
+
   const allListings = useSelector(state => {
     return state.listings.list
   });
 
-  const listings =  allListings.filter(listing => listing.guests >= 2)
+  let listings;
+  listings =  allListings.filter(listing => listing.guests >= guests)
+//   listings = listings.filter(listing => listings.)
 
 
 
