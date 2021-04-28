@@ -30,7 +30,6 @@ export const createReviewForm = newReview => async dispatch => {
 
   if(!res.ok) throw res;
   const review = await res.json();
-  console.log("API REVIEW ", review)
   dispatch(addOneReview(review))
   return review;
 }

@@ -5,12 +5,14 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import listingReducer from "./listings";
 import reviewReducer from "./reviews";
+import bookingReducer from "./bookings";
 
 
 const rootReducer = combineReducers({
   listings: listingReducer,
   session: sessionReducer,
   reviews: reviewReducer,
+  bookings: bookingReducer,
 });
 
 let enhancer;

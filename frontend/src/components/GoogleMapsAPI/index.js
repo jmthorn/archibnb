@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { Redirect, useHistory } from 'react-router';
+// import { Redirect, useHistory } from 'react-router';
 
 const mapStyles = {
   width: '45%',

@@ -2,31 +2,32 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useSearch } from '../../context/SearchContext';
+import { useHistory } from 'react-router';
 import { useParams } from 'react-router';
 import CreateReviewForm from '../CreateReviewForm'
 import { getOneListing } from '../../store/listings'
 import './Listing.css';
 import Reviews from '../Reviews';
-
+import { createBooking } from '../../store/bookings';
 
 function Listing () { 
 
 const sessionUser = useSelector(state => state.session.user);
 const { id } = useParams();
 
-
+const history = useHistory()
 
 const {
         start_date,
-        setStartDate,
+        // setStartDate,
         end_date,
-        setEndDate,
+        // setEndDate,
         rounded_start_date,
-        setRoundedStartDate,
+        // setRoundedStartDate,
         rounded_end_date,
-        setRoundedEndDate,
+        // setRoundedEndDate,
         guests,
-        setGuests
+        // setGuests
   } = useSearch()
 
 
@@ -54,9 +55,26 @@ const {
   } else {
     sessionLinks = (
       <>
-        <h2>Log in to leave a reaview!</h2>
+        <h2>Log in to leave a review!</h2>
       </>
     );
+  }
+
+
+  const bookStay = async(e) => { 
+    e.preventDefault()
+
+    let bookingForm = { 
+      listing_id: id,
+      guest_id: sessionUser,
+      start_date,
+      end_date
+    }
+
+    console.log(bookingForm)
+    let createdBooking = await dispatch(createBooking(bookingForm))
+    // history.push('/profile')
+
   }
 
 
@@ -105,11 +123,11 @@ const {
                       <div className="rounded-date">{rounded_end_date.toString()}</div>
                     </div>
                   </div> 
-                  <div className="guests">
+                  <div className="guests1">
                     <div>Guests</div>
                     <div className="rounded-date">{guests}</div>
                   </div>
-                  <button>Book Stay</button>
+                  <button type="submit" onClick={bookStay}>Book Stay</button>
                 </div>
               </div>
             </div>

@@ -6,21 +6,20 @@ const db = require('../../db/models');
 const router = express.Router();
 
 
-router.get('/:id', asyncHandler(async function(req, res) {
-  const bookings = await db.Booking.findAll({
-    where: {
-      guest_id: req.params.id
-    }, 
-    include: [{ model:db.User},{ model:db.Listing}],
-    order: [['updatedAt', 'DESC']]
-  });
-  return res.json(bookings)
+// router.get('/:id', asyncHandler(async function(req, res) {
+//   const bookings = await db.Booking.findAll({
+//     where: {
+//       guest_id: req.params.id
+//     }, 
+//     include: [{ model:db.User},{ model:db.Listing}],
+//     order: [['updatedAt', 'DESC']]
+//   });
+//   return res.json(bookings)
 
-}))
+// }))
 
 router.post(
   '/',
-  // reviewValidations.validateCreate,
   asyncHandler(async function (req, res) {
     const booking = await db.Booking.create(req.body);
     const newBooking = await db.Booking.findOne({
@@ -30,6 +29,5 @@ router.post(
       include: { model:db.User}
     })
     return res.json(newBooking)
-    // return res.redirect(`${req.baseUrl}/${id}`);
   })
 );
