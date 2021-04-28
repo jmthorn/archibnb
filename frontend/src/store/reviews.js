@@ -49,7 +49,7 @@ const reviewReducer = (state = initialState, action) => {
       });
       return {
         ...allReviews,
-        ...state,
+        // ...state,
       };
     }
     case ADD_ONE: {
