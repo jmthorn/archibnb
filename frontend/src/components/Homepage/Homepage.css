@@ -5,22 +5,29 @@ body {
 
 .homepage-container {
   display: flex;
+  align-content: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg);
+  /* background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/landingpage.jpg); */
   background-size: 100%;
   background-repeat: no-repeat;
-  height: 60em;
+  min-height: 20em;
   top: 2em;
 }
 
+.homepage-container img {
+  width: 100%;
+  height: fit-content;
+}
+
 .search-form-container {
+  z-index: 1;
   background-color: white;
   height: 6em;
   width: auto;
-  position: relative;
-  top: 7em;
+  position: absolute;
+  top: 10em;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -71,4 +78,32 @@ body {
   outline-width: 0px;
   box-shadow: 0px 0px 10px grey;
   border-radius: 50px;
+}
+
+.calender {
+  border: 1px solid rgb(255, 255, 255);
+  background-color: white;
+  border-radius: 2em;
+  padding: 3px;
+  box-shadow: 0px 3px 12px rgb(212, 211, 211);
+  height: 20em;
+  width: 20em;
+}
+.calender1 {
+  position: absolute;
+  left: 29%;
+  top: 18em;
+}
+.calender2 {
+  position: absolute;
+  left: 42%;
+  top: 18em;
+}
+
+.calender:focus {
+  outline-width: 0;
+}
+
+.calender:hover {
+  box-shadow: 0px 3px 12px rgb(212, 211, 211);
 }

@@ -102,7 +102,7 @@ module.exports = {
     {listing_id: 31, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/31.1.jpg"},
     {listing_id: 31, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/31.2.jpg"},
     {listing_id: 31, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/31.3.jpg"},
-    {listing_id: 32, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/32.1.png"},
+    {listing_id: 32, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/32.1.jpg"},
     {listing_id: 32, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/32.2.png"},
     {listing_id: 32, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/32.3.webp"},
     {listing_id: 33, url: "https://archibnb-images.s3.us-east-2.amazonaws.com/33.1.jpg"},

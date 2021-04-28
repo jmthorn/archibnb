@@ -28,9 +28,7 @@ function Navigation({ isLoaded }){
       <li>
         <div className="nav-container">
             <NavLink className="home-button" exact to="/">
-              <a href="/" className="logo">
                 <img className="logo" src={"/images/archibnb_logo.png"} alt="logo"/>
-              </a>
             </NavLink>
         </div>
         {isLoaded && sessionLinks}

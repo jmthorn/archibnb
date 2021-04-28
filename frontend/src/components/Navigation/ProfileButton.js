@@ -8,6 +8,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory()
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -34,6 +35,9 @@ function ProfileButton({ user }) {
     e.preventDefault()
     history.push('/profile')
   }
+
+
+
 
   return (
     <>

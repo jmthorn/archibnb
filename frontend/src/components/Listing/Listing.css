@@ -10,6 +10,7 @@
   height: auto;
   width: auto;
   max-height: 30em;
+  max-width: 80em;
   display: flex;
   flex-direction: row;
   overflow: hidden;
