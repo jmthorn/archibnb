@@ -102,8 +102,8 @@ const { id } = useParams();
                       <div className="per-night"> / night</div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
         </>
     )

@@ -14,6 +14,8 @@ function Homepage (props) {
     const [location, setLocation] = useState("")
     const [start_date, setStartDate] = useState(new Date())
     const [end_date, setEndDate] = useState(new Date())
+    const [rounded_start_date, setRoundedStartDate] = useState(new Date())
+    const [rounded_end_date, setRoundedEndDate] = useState(new Date())
     const [guests, setGuests] = useState("")
     
     const openCalander1 = () => {
@@ -78,6 +80,26 @@ function Homepage (props) {
         return () => document.removeEventListener("click", closeCalender2);
     }, [showCalender2]);
 
+
+    function roundMinutes(date) {
+        date.setHours(date.getHours() + Math.round(date.getMinutes()/60));
+        date.setMinutes(0, 0, 0);
+        return date;
+    }
+
+    const onChange1 = (e) => { 
+        setStartDate(e)
+        let rounded_start_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
+        setRoundedStartDate(rounded_start_date)
+    }
+
+    const onChange2 = (e) => { 
+        setEndDate(e)
+        let rounded_end_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
+        setRoundedEndDate(rounded_end_date)
+    }
+
+
     return(
         <>
             <div className="homepage-container">
@@ -86,10 +108,10 @@ function Homepage (props) {
                     <label value = {location} onChange={(e) => setLocation(e.target.value)} className="input1"> Location
                         <input placeholder="Where are you going?"></input>
                     </label>
-                    <label onClick={openCalander1} value={start_date} className="input2"> Check In
+                    <label onClick={openCalander1} value={rounded_start_date} className="input2"> Check In
                         <input placeholder="Add Dates"></input>
                     </label>
-                    <label onClick={openCalander2} value={end_date} onChange={(e) => setEndDate(e.target.value)} className="input3"> Check Out
+                    <label onClick={openCalander2} value={rounded_end_date} onChange={(e) => setEndDate(e.target.value)} className="input3"> Check Out
                         <input placeholder="Add Dates"></input>
                     </label>
                     <label className="input4"> Guests
@@ -101,15 +123,15 @@ function Homepage (props) {
             {showCalender1 && (
                 <Calendar
                     className="calender calender1"
-                    onChange={(e) => setStartDate(e)}
+                    onChange={onChange1}
                     value={start_date}
                 />
             )}
             {showCalender2 && (
                 <Calendar
                     className="calender calender2"
-                    onChange={(e) => setEndDate(e)}
-                    // value={end_date}
+                    onChange={onChange2}
+                    value={end_date}
                 />
             )}
         </>
