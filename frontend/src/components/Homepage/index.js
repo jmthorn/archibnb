@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import Calendar from 'react-calendar';
 import { useSearch } from '../../context/SearchContext';
 import './Homepage.css';
@@ -29,13 +29,7 @@ function Homepage () {
         setGuests
     } = useSearch()
 
-    // const [location, setLocation] = useState("")
-    // const [start_date, setStartDate] = useState(new Date())
-    // const [end_date, setEndDate] = useState(new Date())
-    // const [rounded_start_date, setRoundedStartDate] = useState(new Date())
-    // const [rounded_end_date, setRoundedEndDate] = useState(new Date())
-    // const [guests, setGuests] = useState("")
-    
+
     const openCalander1 = () => {
         if (showCalender1) return;
         setShowCalender1(true);
@@ -45,7 +39,7 @@ function Homepage () {
         setShowCalender2(true);
     };
     
-    // const history = useHistory()
+    const history = useHistory()
     
     const onSubmit = async (e) => { 
         e.preventDefault()
@@ -69,7 +63,7 @@ function Homepage () {
             guests,
         }
         console.log(searchFrom, rounded_start_date, rounded_end_date)
-        // history.push('/listings')
+        history.push('/listings')
     }
 
     useEffect(() => {

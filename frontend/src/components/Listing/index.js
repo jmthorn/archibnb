@@ -29,14 +29,6 @@ const {
         setGuests
   } = useSearch()
 
-        let searchFrom = { 
-            // address,
-            start_date,
-            end_date,
-            guests,
-        }
-        console.log(searchFrom, rounded_start_date, rounded_end_date)
-
 
   const listing = useSelector(state => {
     return state.listings[id]
@@ -104,7 +96,7 @@ const {
                       <div className="per-night"> / night</div>
                       <div>
                         <div>{rounded_start_date.toString()}</div>
-                        {/* <div>{end_date}</div> */}
+                        <div>{rounded_end_date.toString()}</div>
                       </div>
                   </div>
                 </div>
