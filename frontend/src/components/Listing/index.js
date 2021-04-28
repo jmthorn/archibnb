@@ -66,7 +66,7 @@ const {
 
     let bookingForm = { 
       listing_id: id,
-      guest_id: sessionUser,
+      guest_id: sessionUser.id,
       start_date,
       end_date
     }

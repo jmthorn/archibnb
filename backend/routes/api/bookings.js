@@ -31,3 +31,6 @@ router.post(
     return res.json(newBooking)
   })
 );
+
+
+module.exports = router;

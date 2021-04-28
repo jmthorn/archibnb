@@ -23,15 +23,14 @@ export function MapContainer (props) {
             location
         }
       >
-        {coordinates.forEach((coordinate) => (
+        {/* {coordinates.forEach((coordinate) => ( */}
                 <Marker
-                  title={''}
-                  name={''}
-                  position={{lat:coordinate.lat, long:coordinate.long}} 
+                  name={'Dolores park'}
+                  position={{lat: 34.0522, lng: 118.2437}} 
                   // onClick={Redirect  to='/'}
                 />
-            )
-        )}
+            {/* ) */}
+        {/* )} */}
       </Map>
     );
   
