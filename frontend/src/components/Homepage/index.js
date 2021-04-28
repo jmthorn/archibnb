@@ -62,9 +62,12 @@ function Homepage (props) {
         const closeCalender1 = () => {
         setShowCalender1(false);
         };
-
+        
+        let calender = document.querySelector(".calender")
+        
         document.addEventListener('click', closeCalender1);
-    
+
+        
         return () => document.removeEventListener("click", closeCalender1);
     }, [showCalender1]);
 

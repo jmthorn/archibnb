@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router';
 import CreateReviewForm from '../CreateReviewForm'
 import { getOneListing } from '../../store/listings'
-import { getReviews } from '../../store/reviews'
 import './Listing.css';
+import Reviews from '../Reviews';
 
 
 function Listing () { 
@@ -16,16 +16,10 @@ const { id } = useParams();
     return state.listings[id]
   });
 
-  const reviews = useSelector(state => {
-    return state.reviews.reviews
-  });
-  console.log("FRONTEND REVIEWS:",reviews)
-
   const dispatch = useDispatch()
 
   useEffect(() => { 
     dispatch(getOneListing(id))
-    dispatch(getReviews(id))
   }, [id, dispatch])
 
 
@@ -75,26 +69,7 @@ const { id } = useParams();
               <h1>Reviews</h1>
               {sessionLinks}
               <div className="bottom-quadrant">
-                <div className="reviews-container">
-                  {reviews?.map((review) =>  {
-                    console.log(review)
-                    return (
-                      <div key={review.id} className="review-container">
-                        <div className="author-container">
-                          <img src={review.User.image_url} alt="author"></img>
-                          <div className="author">
-                          {review.User.first_name} {review.User.last_name}
-                          </div>
-                          <div className="author-info">
-
-                          </div>
-                        </div>
-                        <div className="review">{review.review}</div>
-                      </div>
-                    )
-                  })}
-                </div>
-
+                <Reviews />
                 <div className="bookings-container">
                   
                   <div className="price-holder">
@@ -102,7 +77,6 @@ const { id } = useParams();
                       <div className="per-night"> / night</div>
                   </div>
                 </div>
-
               </div>
             </div>
         </>

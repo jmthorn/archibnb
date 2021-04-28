@@ -9,7 +9,7 @@ import { getListings } from '../../store/listings'
 import './Listings.css';
 
 
-function Listings ({guests, location}) { 
+function Listings () { 
 
   const allListings = useSelector(state => {
     return state.listings.list
@@ -63,7 +63,7 @@ function Listings ({guests, location}) {
                     </nav>
                 </div>
                 <div className="maps-container">
-                        <GoogleApiWrapper />
+                    <GoogleApiWrapper />
                 </div>
             </div>
         </>

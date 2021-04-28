@@ -14,12 +14,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.maps-container {
-  /* background-image: url(https://archibnb-images.s3.us-east-2.amazonaws.com/GoogleMaps_placeholder.png); */
-  width: 45%;
-  height: 800px;
-}
-
 .nav-entry {
   border-top: 1px solid lightgray;
   margin: auto 2em;
@@ -95,6 +89,8 @@ a:active {
 
 .maps-container {
   overflow: hidden;
-  margin-top: 3.9em;
+  margin-top: 5.3em;
   /* z-index: -1; */
+  width: 45%;
+  height: 800px;
 }
