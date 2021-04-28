@@ -44,14 +44,6 @@ function Homepage () {
     const onSubmit = async (e) => { 
         e.preventDefault()
 
-        Geocode.fromAddress(location).then(
-            (response) => {
-                const { lat, lng } = response.results[0].geometry.location;
-            },
-            (error) => {
-                console.error(error);
-            }
-        );
         let res = await Geocode.fromAddress(location)
         const { lat, lng } = res.results[0].geometry.location;
         let address = {lat, lng}

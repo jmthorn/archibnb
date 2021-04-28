@@ -31,12 +31,13 @@ function Listings () {
     listings.forEach((listing) => { 
         const lat = listing.latitude;
         const long = listing.longitude;
-        let coorObj = {lat, long}
+        const id = listing.id
+        let coorObj = {lat, long, id}
         coordinateObjects.push(coorObj)
     })
     return coordinateObjects
   }
-console.log(coordinates())
+// console.log(coordinates())
 
   const dispatch = useDispatch()
 
@@ -82,7 +83,7 @@ console.log(coordinates())
                     </nav>
                 </div>
                 <div className="maps-container">
-                    <GoogleApiWrapper location={location} />
+                    <GoogleApiWrapper location={location} coordinates={coordinates()}/>
                 </div>
             </div>
         </>

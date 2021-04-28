@@ -91,14 +91,25 @@ const {
                 <Reviews />
                 <div className="bookings-container">
                   
-                  <div className="price-holder">
-                      <div className="price">${listing.price} </div>
-                      <div className="per-night"> / night</div>
-                      <div>
-                        <div>{rounded_start_date.toString()}</div>
-                        <div>{rounded_end_date.toString()}</div>
-                      </div>
+                  <div className="price-container">
+                      <div className="price1">${listing.price} </div>
+                      <div className="per-night1"> / night</div>
                   </div>
+                  <div className="bookingDates">
+                    <div className="checkin-container">
+                      <div>Check-In</div>
+                      <div className="rounded-date">{rounded_start_date.toString()}</div>
+                    </div>
+                    <div className="checkout-container">
+                      <div className="checkout">Check-Out</div>
+                      <div className="rounded-date">{rounded_end_date.toString()}</div>
+                    </div>
+                  </div> 
+                  <div className="guests">
+                    <div>Guests</div>
+                    <div className="rounded-date">{guests}</div>
+                  </div>
+                  <button>Book Stay</button>
                 </div>
               </div>
             </div>
