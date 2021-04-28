@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import Calendar from 'react-calendar';
 import './Homepage.css';
 import 'react-calendar/dist/Calendar.css';
 import Geocode from "react-geocode";
 Geocode.setApiKey("AIzaSyBrXi5aamhelijXk37duN6o5lR3aPgJBiA");
+// Geocode.setApiKey(process.env.GOOGLE_MAPS_KEY);
 
 
 function Homepage (props) { 
@@ -27,7 +28,7 @@ function Homepage (props) {
         setShowCalender2(true);
     };
     
-    const history = useHistory()
+    // const history = useHistory()
     
     const onSubmit = async (e) => { 
         e.preventDefault()
@@ -63,7 +64,7 @@ function Homepage (props) {
         setShowCalender1(false);
         };
         
-        let calender = document.querySelector(".calender")
+        // let calender = document.querySelector(".calender")
         
         document.addEventListener('click', closeCalender1);
 
