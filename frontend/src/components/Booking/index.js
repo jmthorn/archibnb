@@ -44,17 +44,17 @@ function Bookings () {
             <div className="user-bookings-container">
             {bookings?.map((booking) => (
                 <div key={booking.id} className="user-booking-container">
-                        <NavLink  to={`/listings/${booking.listing_id}`}>
+                    <NavLink  to={`/listings/${booking.listing_id}`}>
                         <img src={booking.Listing.Images[0].url} alt="listing"></img>
-                        </NavLink>
-                        <div className="booking-info">
-                            <div className="listing-name">{booking.Listing.name}</div>
-                            <div className="listing-architect">Architect: {booking.Listing.architect}</div>
-                            {/* <div className="listing-host">{booking.Listing.host_id}</div> */}
-                            <div className="listing-dates">Booking Dates: {roundDate(booking.start_date)} - {roundDate(booking.end_date)}</div>
-                        </div>
-                        <button type="button" onClick={() => cancelBookingButton(booking.id)}>Cancel Trip</button>
+                    </NavLink>
+                    <div className="booking-info">
+                        <div className="listing-name">{booking.Listing.name}</div>
+                        <div className="listing-architect">Architect: {booking.Listing.architect}</div>
+                        {/* <div className="listing-host">{booking.Listing.host_id}</div> */}
+                        <div className="listing-dates">Booking Dates: {roundDate(booking.start_date)} - {roundDate(booking.end_date)}</div>
                     </div>
+                    <button type="button" onClick={() => cancelBookingButton(booking.id)}>Cancel Trip</button>
+                </div>
             ))
             }
             </div>

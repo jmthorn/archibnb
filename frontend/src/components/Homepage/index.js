@@ -5,8 +5,7 @@ import { useSearch } from '../../context/SearchContext';
 import './Homepage.css';
 import 'react-calendar/dist/Calendar.css';
 import Geocode from "react-geocode";
-Geocode.setApiKey("AIzaSyBrXi5aamhelijXk37duN6o5lR3aPgJBiA");
-// Geocode.setApiKey(process.env.GOOGLE_MAPS_KEY);
+Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_KEY);
 
 
 function Homepage () { 
