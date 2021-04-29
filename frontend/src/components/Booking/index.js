@@ -31,7 +31,7 @@ function Bookings () {
     }
    
     const roundDate = (date) => { 
-        return date.split("-").join("/").split("T").slice(0,2)[0]
+        return date.split("-").slice(1,3).join("/").split("T").slice(0,2)[0]
     }
 
 
