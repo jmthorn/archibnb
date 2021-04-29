@@ -1,5 +1,8 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { useSearch } from '../../context/SearchContext';
+import { useHistory } from 'react-router';
+
 // import { Redirect, useHistory } from 'react-router';
 
 const mapStyles = {
@@ -10,10 +13,27 @@ const mapStyles = {
 
 
 export function MapContainer (props) {
-    const { location , coordinates} = props
-    // console.log("COORDINATES", coordinates[0].lat)
+    const { coordinates} = props
+    console.log("COORDINATES", coordinates)
+    const history = useHistory()
+
+        const {
+            location,
+            setLocation
+      } = useSearch()
 
 
+    if (!location.lat) { 
+      const newLocation = {lat: 32.8328 , lng: -117.2713}
+      setLocation(newLocation)
+    }
+
+
+    const onClick2 = (id) => { 
+      history.push(`/listings/${id}`)
+    }
+
+    console.log(location)
     return (
       <Map
         google={props.google}
@@ -23,14 +43,13 @@ export function MapContainer (props) {
             location
         }
       >
-        {/* {coordinates.forEach((coordinate) => ( */}
+        {coordinates.map((coordinate) => (
                 <Marker
-                  name={'Dolores park'}
-                  position={{lat: 34.0522, lng: 118.2437}} 
-                  // onClick={Redirect  to='/'}
+                  position={{lat: coordinate.lat, lng: coordinate.long}} 
+                  onClick={() => onClick2(coordinate.id)}
                 />
-            {/* ) */}
-        {/* )} */}
+            )
+        )}
       </Map>
     );
   

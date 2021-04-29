@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import Bookings from '../Booking';
-import './Profile.css';
 
 
-function Listings () { 
+import './Booking.css';
+
+
+function Bookings () { 
 
   const sessionUser = useSelector(state => state.session.user);
 
@@ -18,13 +19,11 @@ if(!sessionUser) {
 
     return(
         <>
-            <div className="profile-container">
-                <h1>{sessionUser.username}</h1>
-                <h1>{sessionUser.email}</h1>
+            <div className="bookings-container">
+                
             </div>
-            <Bookings />
         </>
     )
 }
 
-export default Listings;
+export default Bookings;

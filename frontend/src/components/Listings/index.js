@@ -83,7 +83,7 @@ function Listings () {
                     </nav>
                 </div>
                 <div className="maps-container">
-                    <GoogleApiWrapper location={location} coordinates={coordinates()}/>
+                    <GoogleApiWrapper coordinates={coordinates()}/>
                 </div>
             </div>
         </>
