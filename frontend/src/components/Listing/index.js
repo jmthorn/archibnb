@@ -76,7 +76,7 @@ const {
     }
 
     let createdBooking = await dispatch(createBooking(bookingForm))
-    // history.push('/profile')
+    history.push('/profile')
 
   }
 

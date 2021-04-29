@@ -8,7 +8,7 @@ import './Profile.css';
 function Listings () { 
 
   const sessionUser = useSelector(state => state.session.user);
-
+  console.log(sessionUser)
   const history = useHistory()
 
 
@@ -19,8 +19,13 @@ if(!sessionUser) {
     return(
         <>
             <div className="profile-container">
-                <h1>{sessionUser.username}</h1>
-                <h1>{sessionUser.email}</h1>
+                <div>
+                    <img src={sessionUser.image_url} alt="user"></img>
+                </div>
+                <div>
+                    <h1>{sessionUser.username}</h1>
+                    <h2>{sessionUser.email}</h2>
+                </div>
             </div>
             <Bookings />
         </>
