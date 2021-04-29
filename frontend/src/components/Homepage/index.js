@@ -62,7 +62,8 @@ function Homepage () {
         const closeCalender1 = () => {
         setShowCalender1(false);
         };
-        document.addEventListener('click', closeCalender1);
+        let homepage = document.querySelector(".homepage-container")
+        homepage.addEventListener('click', closeCalender1);
         return () => document.removeEventListener("click", closeCalender1);
     }, [showCalender1]);
 
@@ -71,7 +72,8 @@ function Homepage () {
         const closeCalender2 = () => {
         setShowCalender2(false);
         };
-        document.addEventListener('click', closeCalender2);
+        let homepage = document.querySelector(".homepage-container")
+        homepage.addEventListener('click', closeCalender2);
         return () => document.removeEventListener("click", closeCalender2);
     }, [showCalender2]);
 
@@ -90,6 +92,7 @@ function Homepage () {
 
     const onChange2 = (e) => { 
         setEndDate(e)
+        console.log(e)
         let rounded_end_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
         setRoundedEndDate(rounded_end_date)
     }
@@ -118,7 +121,7 @@ function Homepage () {
             {showCalender1 && (
                 <Calendar
                     className="calender calender1"
-                    onChange={onChange1}
+                    onChange={() => onChange1}
                     value={start_date}
                 />
             )}

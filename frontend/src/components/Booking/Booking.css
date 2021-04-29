@@ -1,9 +1,24 @@
 .user-bookings-container {
+  margin: 6em 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-booking-container {
+  padding: 2em;
+  margin-bottom: 2em;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-booking-container:hover {
+  box-shadow: 0px 0px 10px lightgray;
 }
 
 .user-booking-container img {
-  height: 100px;
+  height: 200px;
+  border-radius: 20px;
+  margin-right: 2em;
 }

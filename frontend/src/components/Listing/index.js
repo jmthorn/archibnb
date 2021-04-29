@@ -27,7 +27,7 @@ const {
         rounded_end_date,
         // setRoundedEndDate,
         guests,
-        // setGuests
+        setGuests
   } = useSearch()
 
 
@@ -45,6 +45,10 @@ const {
 
   if (!listing) {
     return null;
+  }
+
+  if(!guests) { 
+    setGuests(1)
   }
 
   let sessionLinks;
@@ -71,7 +75,6 @@ const {
       end_date
     }
 
-    console.log(bookingForm)
     let createdBooking = await dispatch(createBooking(bookingForm))
     // history.push('/profile')
 

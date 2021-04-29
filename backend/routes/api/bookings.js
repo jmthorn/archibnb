@@ -25,6 +25,16 @@ router.get('/:id', asyncHandler(async function(req, res) {
 
 }))
 
+router.delete('/:id', asyncHandler(async function(req, res) {
+  const booking = await db.Booking.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  return res.json(booking)
+
+}))
+
 router.post(
   '/',
   asyncHandler(async function (req, res) {
