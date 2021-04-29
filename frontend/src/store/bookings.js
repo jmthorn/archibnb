@@ -16,8 +16,8 @@ const addBooking = booking => ({
 })
 
 
-export const getBookings = id => async dispatch => { 
-    const res = await csrfFetch(`/api/bookings/${id}`);
+export const getBookings = userId => async dispatch => { 
+    const res = await csrfFetch(`/api/bookings/${userId}`);
     if(res.ok) { 
         const bookings = await res.json()
         dispatch(load(bookings))

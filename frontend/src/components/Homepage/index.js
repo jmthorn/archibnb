@@ -54,7 +54,6 @@ function Homepage () {
             end_date,
             guests,
         }
-        console.log(searchFrom, rounded_start_date, rounded_end_date)
         history.push('/listings')
     }
 

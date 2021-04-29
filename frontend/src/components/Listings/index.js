@@ -13,9 +13,9 @@ import './Listings.css';
 function Listings () { 
 
     const {
-            location,
-            start_date,
-            end_date,
+            // location,
+            // start_date,
+            // end_date,
             guests,
       } = useSearch()
 
