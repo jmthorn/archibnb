@@ -38,13 +38,13 @@ function Bookings () {
     const cancelBookingButton = (id) => {
         dispatch(cancelBooking(id))
     }
-
+    console.log(bookings)
     return(
         <>
             <div className="user-bookings-container">
             {bookings?.map((booking) => (
                 <div key={booking.id} className="user-booking-container">
-                        <NavLink  to={`/listings/${booking.Listing.id}`}>
+                        <NavLink  to={`/listings/${booking.listing_id}`}>
                         <img src={booking.Listing.Images[0].url} alt="listing"></img>
                         </NavLink>
                         <div className="booking-info">

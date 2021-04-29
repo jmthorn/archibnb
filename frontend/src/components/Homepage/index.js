@@ -86,8 +86,10 @@ function Homepage () {
 
     const onChange1 = (e) => { 
         setStartDate(e)
+        console.log(e)
         let rounded_start_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
         setRoundedStartDate(rounded_start_date)
+        console.log("ROUNDED",rounded_start_date)
     }
 
     const onChange2 = (e) => { 
@@ -95,6 +97,7 @@ function Homepage () {
         console.log(e)
         let rounded_end_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
         setRoundedEndDate(rounded_end_date)
+        console.log("ROUNDED",rounded_end_date)
     }
 
 
@@ -106,11 +109,11 @@ function Homepage () {
                     <label value = {location} onChange={(e) => setLocation(e.target.value)} className="input1"> Location
                         <input placeholder="Where are you going?"></input>
                     </label>
-                    <label onClick={openCalander1} value={rounded_start_date} className="input2"> Check In
-                        <input placeholder="Add Dates"></input>
+                    <label onClick={openCalander1} className="input2"> Check In
+                        <input value={rounded_start_date} placeholder="Add Dates"></input>
                     </label>
                     <label onClick={openCalander2} value={rounded_end_date} className="input3"> Check Out
-                        <input placeholder="Add Dates"></input>
+                        <input value={rounded_end_date} placeholder="Add Dates"></input>
                     </label>
                     <label className="input4"> Guests
                         <input value = {guests} onChange={(e) => setGuests(e.target.value)} placeholder="Add Guests"></input>
@@ -121,7 +124,7 @@ function Homepage () {
             {showCalender1 && (
                 <Calendar
                     className="calender calender1"
-                    onChange={() => onChange1}
+                    onChange={onChange1}
                     value={start_date}
                 />
             )}

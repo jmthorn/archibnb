@@ -19,7 +19,7 @@ if(!sessionUser) {
     return(
         <>
             <div className="profile-container">
-                <div>
+                <div className="profile-image">
                     <img src={sessionUser.image_url} alt="user"></img>
                 </div>
                 <div>
