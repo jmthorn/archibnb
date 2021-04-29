@@ -96,7 +96,7 @@ const {
               <div className="house-info">
                 <div className="primary-text">Architect:  {listing.architect}</div>
                 <div className="secondary-text">
-                  <div className="guests">{listing.guests} guests ∙ </div>
+                  <div>{listing.guests} guests ∙ </div>
                   <div> {listing.bedrooms} bedrooms ∙ </div>
                   <div> {listing.baths} baths</div>
                 </div>
