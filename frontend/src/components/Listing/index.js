@@ -65,6 +65,8 @@ const {
   }
 
 
+
+
   const bookStay = async(e) => { 
     e.preventDefault()
 
@@ -81,6 +83,18 @@ const {
 
   }
 
+  let sessionButton;
+  if (sessionUser) {
+    sessionButton = (
+      <button type="submit" onClick={bookStay}>Book Stay</button>
+    );
+  } else {
+    sessionButton = (
+      <>
+        <button type="button" disabled>Log In to Book</button>
+      </>
+    );
+  }
 
     return(
         <>
@@ -131,7 +145,7 @@ const {
                     <div>Guests</div>
                     <div className="rounded-date">{guests}</div>
                   </div>
-                  <button type="submit" onClick={bookStay}>Book Stay</button>
+                  {sessionButton}
                 </div>
               </div>
             </div>

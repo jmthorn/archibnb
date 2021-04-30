@@ -26,7 +26,7 @@ function Listings () {
   let listings;
   listings =  allListings.filter(listing => listing.guests >= guests)
   listings =  listings.filter(listing => listing.guests <= guests + 5)
-
+  console.log(listings)
   //provides coordinates to the Google maps API through props
   let  coordinates = () => { 
       let coordinateObjects = []
