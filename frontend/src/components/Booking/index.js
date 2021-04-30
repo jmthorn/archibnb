@@ -36,8 +36,10 @@ function Bookings () {
 
 
     const cancelBookingButton = (id) => {
-        // let result = confirm("Want to Delete?")
-        dispatch(cancelBooking(id))
+        let result = window.confirm("Are you sure you want to cancel your trip?")
+        if (result){ 
+            dispatch(cancelBooking(id))
+        }
     }
 
     
