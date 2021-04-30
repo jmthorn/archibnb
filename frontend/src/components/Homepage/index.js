@@ -47,12 +47,12 @@ function Homepage () {
         const { lat, lng } = res.results[0].geometry.location;
         let address = {lat, lng}
         setLocation(address)
-        let searchFrom = { 
-            address,
-            start_date,
-            end_date,
-            guests,
-        }
+        // let searchFrom = { 
+        //     address,
+        //     start_date,
+        //     end_date,
+        //     guests,
+        // }
         history.push('/listings')
     }
 
@@ -109,10 +109,10 @@ function Homepage () {
                         <input placeholder="Where are you going?"></input>
                     </label>
                     <label onClick={openCalander1} className="input2"> Check In
-                        <input value={rounded_start_date} placeholder="Add Dates"></input>
+                        <input onChange={() => openCalander1} value={rounded_start_date} placeholder="Add Dates"></input>
                     </label>
                     <label onClick={openCalander2} value={rounded_end_date} className="input3"> Check Out
-                        <input value={rounded_end_date} placeholder="Add Dates"></input>
+                        <input onChange={() => openCalander2} value={rounded_end_date} placeholder="Add Dates"></input>
                     </label>
                     <label className="input4"> Guests
                         <input value = {guests} onChange={(e) => setGuests(e.target.value)} placeholder="Add Guests"></input>

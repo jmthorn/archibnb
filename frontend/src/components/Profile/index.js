@@ -8,13 +8,30 @@ import './Profile.css';
 function Listings () { 
 
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser)
+  const bookings = Object.values(useSelector(state => {
+        return state.bookings
+  }))
+
   const history = useHistory()
 
 
-if(!sessionUser) { 
+  if(!sessionUser) { 
     history.push("/")
-}
+  }
+
+  let sessionLinks;
+  if (bookings.length) {
+    sessionLinks = (
+      <Bookings />
+    );
+  } else {
+    sessionLinks = (
+      <>
+        <p>You have no trips planned!</p>
+      </>
+    );
+  }
+
 
     return(
         <>
@@ -28,8 +45,10 @@ if(!sessionUser) {
                     <h2>Email: {sessionUser.email}</h2>
                 </div>
             </div>
-            <h1 className="bookingsTitle">Bookings</h1>
-            <Bookings />
+            <div className="bookings">
+                <h1 className="bookingsTitle">Bookings</h1>
+                {sessionLinks}
+            </div>
         </>
     )
 }

@@ -12,11 +12,34 @@
 }
 
 .user-info {
-  margin-left: 30px;
+  margin-left: 3em;
+}
+
+.user-info h1 {
+  padding-bottom: 1em;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  width: 100%;
+}
+
+.user-info h2 {
+  font-size: 20px;
+  padding: 0px;
+  margin-bottom: 0px;
+  font-weight: 100;
 }
 
 .bookingsTitle {
   margin-left: 2em;
-  margin-bottom: 0px;
+  margin-bottom: 2px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.bookings {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bookings p {
+  margin-left: 3.2em;
+  margin-bottom: 5em;
+  font-size: 20px;
 }

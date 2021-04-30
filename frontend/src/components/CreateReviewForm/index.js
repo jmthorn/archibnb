@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createReviewForm } from '../../store/reviews';
-// import { useHistory } from 'react-router-dom';
 import './CreateReviewForm.css';
 
 const CreateReviewForm = ({user, listing}) => {
 
   const dispatch = useDispatch();
-  // const history = useHistory();
   const [review, setReview] = useState("");
 
 
@@ -21,6 +19,7 @@ const CreateReviewForm = ({user, listing}) => {
       listing_id: parseInt(listing)
     };  
     let createdReview = await dispatch(createReviewForm(newReview))
+    console.log(createdReview)
     setReview("")
   };
 
