@@ -18,6 +18,16 @@ router.get('/:id', asyncHandler(async function(req, res) {
 
 }))
 
+router.delete('/:id', asyncHandler(async function(req, res) {
+  const booking = await db.Review.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  return res.json(req.params.id)
+
+}))
+
 router.post(
   '/',
   // reviewValidations.validateCreate,
@@ -30,7 +40,6 @@ router.post(
       include: { model:db.User}
     })
     return res.json(newReview)
-    // return res.redirect(`${req.baseUrl}/${id}`);
   })
 );
 
