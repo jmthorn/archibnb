@@ -6,9 +6,9 @@ A live Link to our website can be found here: https://archibnb.herokuapp.com/
 
 ## A walkthrough of the website
 
-![](https://archibnb-images.s3.us-east-2.amazonaws.com/walkthru.mov)
+![](https://archibnb-images.s3.us-east-2.amazonaws.com/walkthru.gif)
 
-## Technologies Used to build the site
+## Technologies used to build the site
 
 - HTML , Vanilla CSS, Javascript (Front-end)
 - React (Front-end)
