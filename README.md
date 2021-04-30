@@ -8,7 +8,7 @@ A live Link to our website can be found here: https://archibnb.herokuapp.com/
 
 ![](https://archibnb-images.s3.us-east-2.amazonaws.com/walkthru1.gif)
 
-![](https://archibnb-images.s3.us-east-2.amazonaws.com/walkthru2.gif)
+<!-- ![](https://archibnb-images.s3.us-east-2.amazonaws.com/walkthru2.gif) -->
 
 ## Technologies used to build the site
 
