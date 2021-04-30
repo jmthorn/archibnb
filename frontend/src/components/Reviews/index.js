@@ -53,7 +53,7 @@ function Reviews () {
                         </div>
                         <div className="review">{review.review}</div>
                         {sessionUser && sessionUser.id === review.User.id &&
-                          <button onClick={() => deleteReviewButton(review.id)}>
+                          <button id="deleteReview" onClick={() => deleteReviewButton(review.id)}>
                             <img src={"/images/X.png"} alt="logo"/>
                           </button> 
                         } 
