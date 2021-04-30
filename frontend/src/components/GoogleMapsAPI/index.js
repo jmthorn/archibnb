@@ -33,7 +33,7 @@ export function MapContainer (props) {
       history.push(`/listings/${id}`)
     }
 
-    console.log(location)
+    console.log("LOCATION",location)
     return (
       <Map
         google={props.google}
@@ -42,9 +42,11 @@ export function MapContainer (props) {
         initialCenter={
             location
         }
+        setCenter
       >
         {coordinates.map((coordinate) => (
                 <Marker
+                key={coordinate.lat}
                   position={{lat: coordinate.lat, lng: coordinate.long}} 
                   onClick={() => onClick2(coordinate.id)}
                 />
