@@ -19,7 +19,6 @@ function Bookings () {
     return b.id - a.id;
     })
 
-    console.log(bookings)
     const dispatch = useDispatch()
 
     useEffect(() => { 

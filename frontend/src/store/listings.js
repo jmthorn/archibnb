@@ -26,7 +26,6 @@ export const getOneListing = (listingId) => async dispatch => {
   const res = await fetch(`/api/listings/${listingId}`)
   if (!res.ok) throw res;
   let listing = await res.json();
-  // console.log("FETCH LISTING: ",listing)
   dispatch(addOneListing(listing))
 }
 

@@ -14,7 +14,6 @@ const mapStyles = {
 
 export function MapContainer (props) {
     const { coordinates} = props
-    console.log("COORDINATES", coordinates)
     const history = useHistory()
 
         const {
@@ -33,7 +32,6 @@ export function MapContainer (props) {
       history.push(`/listings/${id}`)
     }
 
-    console.log("LOCATION",location)
     return (
       <Map
         google={props.google}

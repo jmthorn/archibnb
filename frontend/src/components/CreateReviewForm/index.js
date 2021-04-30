@@ -19,7 +19,6 @@ const CreateReviewForm = ({user, listing}) => {
       listing_id: parseInt(listing)
     };  
     let createdReview = await dispatch(createReviewForm(newReview))
-    console.log(createdReview)
     setReview("")
   };
 

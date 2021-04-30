@@ -78,7 +78,6 @@ const {
     }
 
     let createdBooking = await dispatch(createBooking(bookingForm))
-    console.log(createdBooking)
     history.push('/profile')
 
   }
