@@ -85,18 +85,14 @@ function Homepage () {
 
     const onChange1 = (e) => { 
         setStartDate(e)
-        console.log(e)
         let rounded_start_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
         setRoundedStartDate(rounded_start_date)
-        console.log("ROUNDED",rounded_start_date)
     }
 
     const onChange2 = (e) => { 
         setEndDate(e)
-        console.log(e)
         let rounded_end_date = roundMinutes(e).toString().split(" ").slice(1,4).join(" ")
         setRoundedEndDate(rounded_end_date)
-        console.log("ROUNDED",rounded_end_date)
     }
 
 
