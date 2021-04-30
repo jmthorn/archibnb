@@ -37,7 +37,10 @@
 
 .secondary-images img {
   height: 48.5%;
+  max-height: fit-content;
   max-width: fit-content;
+  width: 100%;
+  width: initial;
 }
 
 #listing-address {
