@@ -31,7 +31,7 @@ router.delete('/:id', asyncHandler(async function(req, res) {
       id: req.params.id
     }
   });
-  return res.json(booking)
+  return res.json(req.params.id)
 
 }))
 
@@ -43,7 +43,13 @@ router.post(
       where: {
         id: booking.id
       },
-      include: { model:db.User}
+      include: [
+      { model:db.User},
+      { model:db.Listing,
+        include:[{
+          model: db.Image
+        }]
+      }]
     })
     return res.json(newBooking)
   })

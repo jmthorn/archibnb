@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 
 const mapStyles = {
   width: '45%',
-  height: '800px'
+  height: '822px'
 };
 
 
@@ -57,6 +57,5 @@ export function MapContainer (props) {
 
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY
-  // apiKey: "AIzaSyBrXi5aamhelijXk37duN6o5lR3aPgJBiA"
 })(MapContainer);
  

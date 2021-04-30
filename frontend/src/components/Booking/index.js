@@ -36,9 +36,11 @@ function Bookings () {
 
 
     const cancelBookingButton = (id) => {
+        // let result = confirm("Want to Delete?")
         dispatch(cancelBooking(id))
     }
-    console.log(bookings)
+
+    
     return(
         <>
             <div className="user-bookings-container">

@@ -72,11 +72,10 @@ const bookingReducer = (state = initialState, action) => {
             return newState;
         }
         case DELETE_ONE: { 
-            const commentId = action.booking.id;
             const newState = { 
                 ...state,
-                [commentId]: ""
             }
+            delete newState[action.booking]
             return newState
         }
         default:

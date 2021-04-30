@@ -1,5 +1,5 @@
 .user-bookings-container {
-  margin: 6em 2em;
+  margin: 2em 2em;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -35,7 +35,7 @@
   border: none;
   color: white;
   font-size: 16px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 4em;
   right: 2em;
 }

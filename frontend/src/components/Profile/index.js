@@ -22,11 +22,13 @@ if(!sessionUser) {
                 <div className="profile-image">
                     <img src={sessionUser.image_url} alt="user"></img>
                 </div>
-                <div>
+                <div className="user-info">
                     <h1>{sessionUser.username}</h1>
-                    <h2>{sessionUser.email}</h2>
+                    <h2>Name: {sessionUser.first_name} {sessionUser.last_name}</h2>
+                    <h2>Email: {sessionUser.email}</h2>
                 </div>
             </div>
+            <h1 className="bookingsTitle">Bookings</h1>
             <Bookings />
         </>
     )
