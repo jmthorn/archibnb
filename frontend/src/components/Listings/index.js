@@ -13,7 +13,7 @@ import './Listings.css';
 function Listings () { 
 
     const {
-            // location,
+            location,
             // start_date,
             // end_date,
             guests,
@@ -37,7 +37,6 @@ function Listings () {
     })
     return coordinateObjects
   }
-// console.log(coordinates())
 
   const dispatch = useDispatch()
 
@@ -57,7 +56,7 @@ function Listings () {
                     <nav>
                         {listings.map((listing) => {
                         return (
-                            <NavLink key={listing.name} to={`/listings/${listing.id}`}>
+                            <NavLink key={listing.id} to={`/listings/${listing.id}`}>
                                 <div className={"nav-entry"}>
                                     <div
                                     className="nav-entry-image"
