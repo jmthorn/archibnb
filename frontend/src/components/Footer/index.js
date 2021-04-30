@@ -14,6 +14,7 @@ function Footer (props) {
                         <img src={"/images/linkedin-1.png"} alt="logo"/>
                     </a>
                 </div>
+                <h2>Built By: Jessica Thornton</h2>
                 <div className="footer-description">
                     <p> This AirBnb clone was built as a week-long project </p>
                     <p>  for a rigorous 1000+ hour software engineering bootcamp.</p>

@@ -18,6 +18,16 @@
   text-align: center;
 }
 
+.footer-description p {
+  margin: 6px;
+  padding: 2px;
+}
+
+.footer-container h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
 .footer-icons {
   display: flex;
   flex-direction: row;
