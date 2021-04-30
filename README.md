@@ -1,16 +1,18 @@
 # Welcome to ArchiBnb
 
-This AirBnb
+In this AirBnb clone, a user can search for and book an architecturally significany house for a stay. The user can also manage their bookings and leave a review for the property.
 
-A live Link to our website can be found here: https://brainfood-app.herokuapp.com/users/signup
+A live Link to our website can be found here: https://archibnb.herokuapp.com/
 
-## A walkthrough of our website
+## A walkthrough of the website
 
-https://github.com/jmthorn/BrainFood/blob/main/2021-04-12%2009-46-32.gif
+![](https://archibnb-images.s3.us-east-2.amazonaws.com/walkthru.mp4)
 
 ## Technologies Used to build our awesome website
 
-- HTML (using PUG), Vanilla CSS, Javascript (Front-end)
+- HTML , Vanilla CSS, Javascript (Front-end)
+- React (Front-end)
+- Redux (Front-end)
 - Heroku (hosting services) (Front-end)
 - csurf, dotenv, bcrypt, cookie-parser (Back-end)
 - express, express-session, express-validator (Back-end)
@@ -20,202 +22,180 @@ https://github.com/jmthorn/BrainFood/blob/main/2021-04-12%2009-46-32.gif
 ## Functionalities
 
 - User authentication is completed by hashing passwords using bcrypt js library (csurf protected as well)
-- Only user/readers who are logged in can access the home page, the bookshelf page and the individual books page
-- Querying for book-specific information, related tags, reviews, ratings, and user-specific read-status and bookshelves as well as writing new reviews with edit and delete functionality
-- Once logged in a user can only edit/delete books, reviews and bookshelves that they have created
-- Used Modals to render editing features
-- Implemented AJAX when creating a review on a specific book page
-- A user can filter their books by choosing a pre-defined or custom bookshelf
-- Logged in user can have user-specific read-status on a book
-- Logged in user can add tags to books
-- Logged in user can edit a book's information
+- The user can search for properties around the world by entering the location, booking dates and guest count.
+- Once logged in, a user can book a listing for a specified amount of time. Once made, the user has the ability to cancel the booking on their profile page.
+- The user can leave a review on a given property.
+- Used Modals to render the login functionality
+- Implemented AJAX when creating a review on a specific listing page or deleting a booking on the profile page
 - Logged in user has a profile page
-- Nav bar includes routes to the home page, bookshelf page, allows user to view their profile and logout.
+- The navbar includes routes to the home page and allows user to either view their profile and logout or sign up/log in based on their session status.
 
-## Our routes code snippet:
+## Backend bookings routes code snippets:
 
 ```
 const express = require('express');
+const asyncHandler = require('express-async-handler');
+const db = require('../../db/models');
+
+
 const router = express.Router();
-const bcrypt = require('bcrypt');
 
-const { csrfProtection, asyncHandler } = require('./utils');
-const { loginUser, logoutUser } = require('../auth');
-const { check, validationResult } = require('express-validator');
-const db = require('../db/models');
 
-router.get("/:id", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId
-    if (!userId) res.redirect("/users/login");
-    let bookId = parseInt(req.params.id, 10)
-    let book = await db.Book.findByPk(bookId, { include: db.Tag })
-    let bookshelves = await db.Bookshelf.findAll({ where: { userId } })
-    let stringTime = book.updatedAt.toString()
-    let splitTime = stringTime.split(" ")
-    let date = splitTime.slice(1, 4).join(" ")
-    let reviews = await db.Review.findAll({
-        where: { bookId },
-        include: db.User,
-        order: [["createdAt", "DESC"]]
+router.get('/:id', asyncHandler(async function(req, res) {
+  const bookings = await db.Booking.findAll({
+    where: {
+      guest_id: req.params.id
+    },
+    include: [
+      { model:db.User},
+      { model:db.Listing,
+        include:[{
+          model: db.Image
+        }]
+      }
+    ],
+    order: [['updatedAt', 'DESC']]
+  });
+  return res.json(bookings)
+
+}))
+
+router.delete('/:id', asyncHandler(async function(req, res) {
+  const booking = await db.Booking.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  return res.json(req.params.id)
+
+}))
+
+router.post(
+  '/',
+  asyncHandler(async function (req, res) {
+    const booking = await db.Booking.create(req.body);
+    const newBooking = await db.Booking.findOne({
+      where: {
+        id: booking.id
+      },
+      include: [
+      { model:db.User},
+      { model:db.Listing,
+        include:[{
+          model: db.Image
+        }]
+      }]
     })
-    const lowestShelf = bookshelves[0];
-
-    let readStatus = await db.ReadStatus.findOne({ where: { userId, bookId } })
-    let status;
-    if (!readStatus) status = "None"
-    else status = readStatus.status
-    // if (!status) status = "None"
-
-    res.render('book', {
-        book,
-        reviews,
-        userId,
-        bookshelves,
-        date,
-        lowestShelf,
-        status
-    })
-}))
-
-//UPDATING BOOK==================================================
-
-router.post("/:id", asyncHandler(async (req, res) => {
-    let bookId = parseInt(req.params.id, 10)
-    let book = await db.Book.findByPk(bookId)
-    const { cover, title, author, published, description } = req.body
-    await book.update({ cover, title, author, published, description })
-    res.redirect(`/books/${bookId}`)
-}))
-
-//ADDING REVIEW====================================================
-
-router.post("/:id/reviews", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId
-    const user = await db.User.findByPk(userId)
-    const { review, bookId, rating } = req.body;
-
-    const newReview = await db.Review.create({ review, rating, userId, bookId, author: user.username })
-    res.json({ newReview })
-}))
-
-//EDIT REVIEW FROM BOOK=============================================
-router.post("/reviews/:id", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId
-    let reviewId = parseInt(req.params.id, 10)
-    let reviewObject = await db.Review.findByPk(reviewId)
-    if (userId === reviewObject.userId) {
-        const { rating, review } = req.body;
-        await reviewObject.update({ rating, review })
-        res.redirect(`/books/${reviewObject.bookId}`)
-    } else {
-        // TODO: display a 403 response FORBIDDEN
-    }
-}))
-
-//DELETE REVIEW FROM BOOK=============================================
-router.delete("/reviews/:id", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId;
-    const reviewId = parseInt(req.params.id);
-    const review = await db.Review.findByPk(reviewId)
-    if (userId === review.userId) {
-        let destroyedReview = await db.Review.destroy({ where: { id: reviewId } });
-        res.json()
-    } else {
-        // TODO: display a 403 response FORBIDDEN
-    }
-
-}));
-
-
-//ADD BOOK TO BOOKSHELF=============================================
-
-router.post("/:id/bookshelves", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId
-    // const user = await db.User.findByPk(userId)
-    const { bookshelfId, bookId } = req.body;
-    let bookshelf = db.Bookshelf.findByPk(bookshelfId)
-    let bookshelfToBook = await db.BookshelfToBook.create({ bookshelfId: parseInt(bookshelfId), bookId: parseInt(bookId) });
-    res.json({ userId, bookshelfToBook })
-}));
-
-//DELETE BOOK =========================================================
-
-router.post("/:id/delete", asyncHandler(async (req, res) => {
-    // const userId = req.session.auth.userId
-    const { bookId } = req.body;
-    let book = await db.Book.findByPk(bookId)
-    let deletedBook = await db.Book.destroy({ where: { id: parseInt(bookId) } });
-    console.log('DELETEEEEEEEEE', deletedBook)
-    res.json({ userId, deletedBook })
-}));
-
-
-//ADDING TAGS ===========================================================
-
-
-router.post("/:id/tags", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId
-    const user = await db.User.findByPk(userId)
-    const { category, bookId } = req.body;
-    let existingTag = await db.Tag.findOne({ where: { category } })
-
-    if (!existingTag) {
-
-        const newTag = await db.Tag.create({ category })
-        let bookToTags = await db.BookToTag.create({ tagId: parseInt(newTag.id), bookId: parseInt(bookId) });
-
-        res.json({ newTag })
-    } else {
-        let bookToTags = await db.BookToTag.create({ tagId: parseInt(existingTag.id), bookId: parseInt(bookId) });
-        console.log(bookToTags)
-        res.json({ existingTag })
-    }
-}))
-
-
-// Edit Read Status ==============================================
-
-router.post("/:id/readstatus", asyncHandler(async (req, res) => {
-    const userId = req.session.auth.userId
-    let bookId = parseInt(req.params.id, 10)
-    const { status } = req.body;
-    let readStatus = await db.ReadStatus.findOne({ where: { bookId, userId } })
-    await readStatus.update({ status });
-    res.redirect(`/books/${bookId}`);
-}))
-
-
-//DELETE TAG============================================================
-
-
-
-router.post("/tags/:id", asyncHandler(async (req, res) => {
-
-    let { bookId, tagId } = req.body
-    console.log(bookId, tagId)
-    const tag = await db.Tag.findOne({ where: { tagId, bookId }, include: db.Book });
-    // await tag.destroy();
-    console.log('HELOOOOOOOOOOOOO', tag)
-
-    res.redirect(`/books/${bookId}`);
-})
+    return res.json(newBooking)
+  })
 );
 
 
-
 module.exports = router;
+
+```
+
+## Frontend routes code snippets:
+
+```
+
+import { csrfFetch } from './csrf';
+
+
+const LOAD = 'bookings/LOAD'
+const ADD_ONE = 'bookings/ADD_ONE'
+const DELETE_ONE = 'bookings/DELETE_ONE'
+
+const load = bookings => ({
+    type:LOAD,
+    bookings
+})
+
+
+const addBooking = booking => ({
+    type: ADD_ONE,
+    booking
+})
+
+const deleteBooking = booking => ({
+    type: DELETE_ONE,
+    booking
+})
+
+
+export const getBookings = userId => async dispatch => {
+    const res = await csrfFetch(`/api/bookings/${userId}`);
+    if(res.ok) {
+        const bookings = await res.json()
+        dispatch(load(bookings))
+    }
+}
+
+export const createBooking = newBooking => async dispatch => {
+    const res = await csrfFetch(`/api/bookings`, {
+        method: 'POST',
+        body: JSON.stringify(newBooking)
+    })
+    if(!res.ok) throw res;
+    const booking = await res.json()
+    dispatch(addBooking(booking))
+    return booking;
+}
+
+export const cancelBooking = userId => async dispatch => {
+    const res = await csrfFetch(`/api/bookings/${userId}`, {
+        method: 'DELETE',
+    })
+    if(!res.ok) throw res;
+    const booking = await res.json()
+    dispatch(deleteBooking(booking))
+    return booking;
+}
+
+const initialState = {};
+
+const bookingReducer = (state = initialState, action) => {
+    switch(action.type) {
+        case LOAD: {
+            const allBookings = {}
+            action.bookings.forEach(booking => {
+                allBookings[booking.id] = booking
+            })
+            return  {
+                ...allBookings
+            }
+        }
+        case ADD_ONE: {
+            const newState = {
+                ...state,
+                [action.booking.id]: action.booking
+            }
+            return newState;
+        }
+        case DELETE_ONE: {
+            const newState = {
+                ...state,
+            }
+            delete newState[action.booking]
+            return newState
+        }
+        default:
+            return state;
+    }
+}
+
+export default bookingReducer;
+
 ```
 
 ## Challenges
 
-- There were issues with implementing the delete button for the profile page. The page would not redirect to the login page, but hang in current profile page. The button itself would delete the user from the front end but would stay on the profile page until the browser was closed and reopened.
+- One of the most challenging aspects of this project was the ability to filter listings based on the location entered by the user. This involved first using the Google Geocoding API to transform the user input into a specific longitude and latitude. Once plotting this point and passing it to a custom React context, the Google Maps API could then use the point as its initialCenter. Once this location had been established, it could be added to the array of queried listings which could then be sorted by an algorithm to order the queries by relative location the user's input coordinates.
 
 ## Future Implementations
 
-- Search bar functionality
-- Delete functionality on tags
-- More robust styling
+- Search bar functionality utilizing booking input to further filter queried listings
 
-## The BrainFood Creator
+## The ArchiBnb Creator
 
 - ===[@jmthorn](https://github.com/jmthorn) 🐈
