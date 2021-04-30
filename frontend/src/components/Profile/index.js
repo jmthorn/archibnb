@@ -32,6 +32,9 @@ function Listings () {
     );
   }
 
+  const updateUserForm = () => { 
+    
+  }
 
     return(
         <>
@@ -44,6 +47,7 @@ function Listings () {
                     <h2>Name: {sessionUser.first_name} {sessionUser.last_name}</h2>
                     <h2>Email: {sessionUser.email}</h2>
                 </div>
+                <button type="button" onClick={() => updateUserForm}>Edit Profile</button>
             </div>
             <div className="bookings">
                 <h1 className="bookingsTitle">Bookings</h1>

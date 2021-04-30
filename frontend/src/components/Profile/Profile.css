@@ -1,8 +1,9 @@
 .profile-container {
-  margin: 8em 2em;
+  margin: 10em 2em;
   display: flex;
   flex-direction: row;
   font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
 .profile-image img {
@@ -42,4 +43,18 @@
   margin-left: 3.2em;
   margin-bottom: 5em;
   font-size: 20px;
+}
+
+.profile-container button {
+  background-color: rgb(214, 68, 92);
+  height: 3em;
+  width: 20%;
+  border-radius: 10px;
+  margin-top: 0px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 1em;
+  right: 2em;
 }
