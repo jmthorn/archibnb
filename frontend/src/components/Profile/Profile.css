@@ -6,10 +6,22 @@
   position: relative;
 }
 
-.profile-image img {
-  height: 150px;
+.profile-image {
   width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
   border-radius: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.profile-image img {
+  position: absolute;
+  display: block;
+  align-self: center;
+  max-height: 150px;
 }
 
 .user-info {

@@ -111,10 +111,21 @@
   flex-direction: row;
 }
 
-.author-container img {
-  height: 4em;
+.review-image-container {
   width: 4em;
-  border-radius: 50px;
+  height: 4em;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.review-image-container img {
+  position: absolute;
+  display: block;
+  align-self: center;
+  max-height: 4em;
 }
 
 .author-container .author {

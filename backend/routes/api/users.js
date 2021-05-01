@@ -48,4 +48,23 @@ router.post(
 );
 
 
+
+// Update User Info
+router.patch(
+  '/:id',
+  asyncHandler(async (req, res) => {
+    const { id, username, email, image_url, first_name, last_name } = req.body
+    console.log(id, username, email, image_url, first_name, last_name)
+    const userId = await User.update({username, email, image_url, first_name, last_name },{where: {id}});
+    const user = await User.findByPk(id);
+    console.log("USERRRRRRRRRR", user)
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  }),
+);
+
+
 module.exports = router;
