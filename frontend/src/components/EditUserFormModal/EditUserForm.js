@@ -65,7 +65,7 @@ function LoginForm() {
           required
         />
       </label>
-      <label className="input4">
+      <label className="input3">
         {/* First Name */}
         <input
           placeholder="First Name"
