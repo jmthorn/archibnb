@@ -3,17 +3,18 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 
 function LoginForm() {
-  const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [image_url, setImageUrl] = useState("");
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [errors, setErrors] = useState([]);
-
   const sessionUser = useSelector(state => state.session.user);
 
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState(sessionUser.username);
+  const [email, setEmail] = useState(sessionUser.email);
+  const [image_url, setImageUrl] = useState(sessionUser.image_url);
+  const [first_name, setFirstName] = useState(sessionUser.first_name);
+  const [last_name, setLastName] = useState(sessionUser.last_name);
+  const [errors, setErrors] = useState([]);
 
+  
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
