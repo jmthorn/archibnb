@@ -43,7 +43,9 @@ function Reviews () {
                     return (
                       <div key={review.id} className="review-container">
                         <div className="author-container">
-                          <img src={review.User.image_url} alt="author"></img>
+                          <div className="review-image-container">
+                            <img src={review.User.image_url} alt="author"></img>
+                          </div>
                           <div className="author">
                           {review.User.first_name} {review.User.last_name}
                           </div>

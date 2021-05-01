@@ -81,6 +81,13 @@
   border-top: none;
 }
 
+#modal-content .input3 {
+  border: 1px solid rgb(173, 172, 172);
+  padding: 10px;
+  display: block;
+  border-top: none;
+}
+
 #modal-content .login {
   padding: 15px;
   margin: 15px 5px 5px, 5px;
