@@ -1,6 +1,6 @@
 # Welcome to ArchiBnb
 
-In this AirBnb clone, a user can search for and book an architecturally significany house for a stay. The user can also manage their bookings and leave a review for the property.
+In this AirBnb clone, a user can search for and book an architecturally significant house for a stay. The user can also manage their bookings and leave a review for the property.
 
 A live Link to our website can be found here: https://archibnb.herokuapp.com/
 
